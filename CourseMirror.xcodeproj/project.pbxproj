@@ -7,6 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E507CC4D1B6BD25C0002E509 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = E507CC4C1B6BD25C0002E509 /* Course.m */; };
+		E507CC501B6BD26F0002E509 /* Lecture.m in Sources */ = {isa = PBXBuildFile; fileRef = E507CC4F1B6BD26F0002E509 /* Lecture.m */; };
+		E507CC531B6BD2850002E509 /* Summary.m in Sources */ = {isa = PBXBuildFile; fileRef = E507CC521B6BD2850002E509 /* Summary.m */; };
+		E507CC561B6BD2910002E509 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = E507CC551B6BD2910002E509 /* Question.m */; };
+		E507CC5A1B6BD2E90002E509 /* LibraryAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E507CC591B6BD2E90002E509 /* LibraryAPI.m */; };
+		E507CC5D1B6BD5150002E509 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E507CC5B1B6BD5150002E509 /* Bolts.framework */; };
+		E507CC5E1B6BD5150002E509 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E507CC5C1B6BD5150002E509 /* Parse.framework */; };
+		E507CC611B6BD59F0002E509 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E507CC601B6BD59F0002E509 /* AudioToolbox.framework */; };
+		E507CC631B6BD5A70002E509 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E507CC621B6BD5A70002E509 /* CFNetwork.framework */; };
+		E507CC651B6BD5B10002E509 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E507CC641B6BD5B10002E509 /* CoreGraphics.framework */; };
+		E507CC671B6BD5BB0002E509 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E507CC661B6BD5BB0002E509 /* CoreLocation.framework */; };
+		E507CC691B6BD5C70002E509 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E507CC681B6BD5C70002E509 /* QuartzCore.framework */; };
+		E507CC6B1B6BD5CF0002E509 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E507CC6A1B6BD5CF0002E509 /* Security.framework */; };
+		E507CC6D1B6BD5D70002E509 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E507CC6C1B6BD5D70002E509 /* StoreKit.framework */; };
+		E507CC6F1B6BD5DF0002E509 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E507CC6E1B6BD5DF0002E509 /* SystemConfiguration.framework */; };
+		E507CC711B6BD5E70002E509 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E507CC701B6BD5E70002E509 /* libz.dylib */; };
+		E507CC731B6BD5F60002E509 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E507CC721B6BD5F60002E509 /* libsqlite3.dylib */; };
+		E507CC791B6BFA180002E509 /* GZTSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E507CC781B6BFA180002E509 /* GZTSettingViewController.m */; };
+		E507CC7F1B6BFB9A0002E509 /* GZTCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E507CC7E1B6BFB9A0002E509 /* GZTCourseViewController.m */; };
+		E507CC891B6E75F10002E509 /* UIColor+PDD.m in Sources */ = {isa = PBXBuildFile; fileRef = E507CC881B6E75F10002E509 /* UIColor+PDD.m */; };
+		E507CC8C1B6E8B0B0002E509 /* LocalData.m in Sources */ = {isa = PBXBuildFile; fileRef = E507CC8B1B6E8B0B0002E509 /* LocalData.m */; };
+		E507CC8F1B6E8B160002E509 /* ParseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E507CC8E1B6E8B160002E509 /* ParseClient.m */; };
+		E507CC941B6E992F0002E509 /* GZTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E507CC931B6E992F0002E509 /* GZTUser.m */; };
+		E507CC961B6EACD00002E509 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E507CC951B6EACD00002E509 /* ParseUI.framework */; };
+		E507CC991B6EAF850002E509 /* GZTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E507CC981B6EAF850002E509 /* GZTLoginViewController.m */; };
+		E507CC9D1B6EBBF70002E509 /* CourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E507CC9C1B6EBBF70002E509 /* CourseCell.xib */; };
+		E507CCA31B6EBEB00002E509 /* CourseCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E507CCA21B6EBEB00002E509 /* CourseCellTableViewCell.m */; };
+		E507CCAC1B6ED69E0002E509 /* GZTLectureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E507CCAB1B6ED69E0002E509 /* GZTLectureViewController.m */; };
+		E507CCAF1B6F05240002E509 /* GZTGlobalModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E507CCAE1B6F05240002E509 /* GZTGlobalModule.m */; };
+		E507CCB21B6F0AB90002E509 /* GZTLectureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E507CCB11B6F0AB90002E509 /* GZTLectureCell.m */; };
+		E507CCB41B6F0ACE0002E509 /* GZTLectureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E507CCB31B6F0ACE0002E509 /* GZTLectureCell.xib */; };
 		E59519051B6AB5ED0045044E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E59519041B6AB5ED0045044E /* main.m */; };
 		E59519081B6AB5ED0045044E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E59519071B6AB5ED0045044E /* AppDelegate.m */; };
 		E595190B1B6AB5ED0045044E /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E595190A1B6AB5ED0045044E /* FirstViewController.m */; };
@@ -15,6 +46,11 @@
 		E59519131B6AB5ED0045044E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E59519121B6AB5ED0045044E /* Images.xcassets */; };
 		E59519161B6AB5ED0045044E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E59519141B6AB5ED0045044E /* LaunchScreen.xib */; };
 		E59519221B6AB5ED0045044E /* CourseMirrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E59519211B6AB5ED0045044E /* CourseMirrorTests.m */; };
+		E59519BB1B6FD54800E34C9D /* QuestionView1.xib in Resources */ = {isa = PBXBuildFile; fileRef = E59519BA1B6FD54800E34C9D /* QuestionView1.xib */; };
+		E59519BE1B6FD77300E34C9D /* QuestionView1.m in Sources */ = {isa = PBXBuildFile; fileRef = E59519BD1B6FD77300E34C9D /* QuestionView1.m */; };
+		E59519C41B6FE06300E34C9D /* GZTQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59519C31B6FE06300E34C9D /* GZTQuestionViewController.m */; };
+		E59519C71B6FF81800E34C9D /* GZTJsonTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = E59519C61B6FF81800E34C9D /* GZTJsonTransfer.m */; };
+		E59519CA1B7046DC00E34C9D /* GZTUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E59519C91B7046DC00E34C9D /* GZTUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +64,53 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E507CC4B1B6BD25C0002E509 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
+		E507CC4C1B6BD25C0002E509 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
+		E507CC4E1B6BD26F0002E509 /* Lecture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lecture.h; sourceTree = "<group>"; };
+		E507CC4F1B6BD26F0002E509 /* Lecture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lecture.m; sourceTree = "<group>"; };
+		E507CC511B6BD2850002E509 /* Summary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Summary.h; sourceTree = "<group>"; };
+		E507CC521B6BD2850002E509 /* Summary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Summary.m; sourceTree = "<group>"; };
+		E507CC541B6BD2910002E509 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
+		E507CC551B6BD2910002E509 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		E507CC581B6BD2E90002E509 /* LibraryAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryAPI.h; sourceTree = "<group>"; };
+		E507CC591B6BD2E90002E509 /* LibraryAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryAPI.m; sourceTree = "<group>"; };
+		E507CC5B1B6BD5150002E509 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		E507CC5C1B6BD5150002E509 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		E507CC601B6BD59F0002E509 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E507CC621B6BD5A70002E509 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		E507CC641B6BD5B10002E509 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E507CC661B6BD5BB0002E509 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E507CC681B6BD5C70002E509 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E507CC6A1B6BD5CF0002E509 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		E507CC6C1B6BD5D70002E509 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		E507CC6E1B6BD5DF0002E509 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E507CC701B6BD5E70002E509 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		E507CC721B6BD5F60002E509 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		E507CC771B6BFA180002E509 /* GZTSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZTSettingViewController.h; sourceTree = "<group>"; };
+		E507CC781B6BFA180002E509 /* GZTSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZTSettingViewController.m; sourceTree = "<group>"; };
+		E507CC7D1B6BFB9A0002E509 /* GZTCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZTCourseViewController.h; sourceTree = "<group>"; };
+		E507CC7E1B6BFB9A0002E509 /* GZTCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZTCourseViewController.m; sourceTree = "<group>"; };
+		E507CC871B6E75F10002E509 /* UIColor+PDD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+PDD.h"; path = "../../courseMIRROR-master 2/F8 Developer Conference/Categories/UIColor+PDD.h"; sourceTree = "<group>"; };
+		E507CC881B6E75F10002E509 /* UIColor+PDD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+PDD.m"; path = "../../courseMIRROR-master 2/F8 Developer Conference/Categories/UIColor+PDD.m"; sourceTree = "<group>"; };
+		E507CC8A1B6E8B0B0002E509 /* LocalData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalData.h; sourceTree = "<group>"; };
+		E507CC8B1B6E8B0B0002E509 /* LocalData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalData.m; sourceTree = "<group>"; };
+		E507CC8D1B6E8B160002E509 /* ParseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseClient.h; sourceTree = "<group>"; };
+		E507CC8E1B6E8B160002E509 /* ParseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseClient.m; sourceTree = "<group>"; };
+		E507CC921B6E992F0002E509 /* GZTUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZTUser.h; sourceTree = "<group>"; };
+		E507CC931B6E992F0002E509 /* GZTUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZTUser.m; sourceTree = "<group>"; };
+		E507CC951B6EACD00002E509 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		E507CC971B6EAF850002E509 /* GZTLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZTLoginViewController.h; sourceTree = "<group>"; };
+		E507CC981B6EAF850002E509 /* GZTLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZTLoginViewController.m; sourceTree = "<group>"; };
+		E507CC9C1B6EBBF70002E509 /* CourseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseCell.xib; sourceTree = "<group>"; };
+		E507CCA11B6EBEB00002E509 /* CourseCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseCellTableViewCell.h; path = ../CourseCellTableViewCell.h; sourceTree = "<group>"; };
+		E507CCA21B6EBEB00002E509 /* CourseCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseCellTableViewCell.m; path = ../CourseCellTableViewCell.m; sourceTree = "<group>"; };
+		E507CCAA1B6ED69E0002E509 /* GZTLectureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GZTLectureViewController.h; path = ../GZTLectureViewController.h; sourceTree = "<group>"; };
+		E507CCAB1B6ED69E0002E509 /* GZTLectureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GZTLectureViewController.m; path = ../GZTLectureViewController.m; sourceTree = "<group>"; };
+		E507CCAD1B6F05240002E509 /* GZTGlobalModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZTGlobalModule.h; sourceTree = "<group>"; };
+		E507CCAE1B6F05240002E509 /* GZTGlobalModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZTGlobalModule.m; sourceTree = "<group>"; };
+		E507CCB01B6F0AB90002E509 /* GZTLectureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZTLectureCell.h; sourceTree = "<group>"; };
+		E507CCB11B6F0AB90002E509 /* GZTLectureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZTLectureCell.m; sourceTree = "<group>"; };
+		E507CCB31B6F0ACE0002E509 /* GZTLectureCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GZTLectureCell.xib; sourceTree = "<group>"; };
 		E59518FF1B6AB5ED0045044E /* CourseMirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CourseMirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E59519031B6AB5ED0045044E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E59519041B6AB5ED0045044E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -43,6 +126,15 @@
 		E595191B1B6AB5ED0045044E /* CourseMirrorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CourseMirrorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E59519201B6AB5ED0045044E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E59519211B6AB5ED0045044E /* CourseMirrorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseMirrorTests.m; sourceTree = "<group>"; };
+		E59519BA1B6FD54800E34C9D /* QuestionView1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionView1.xib; sourceTree = "<group>"; };
+		E59519BC1B6FD77300E34C9D /* QuestionView1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionView1.h; sourceTree = "<group>"; };
+		E59519BD1B6FD77300E34C9D /* QuestionView1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionView1.m; sourceTree = "<group>"; };
+		E59519C21B6FE06300E34C9D /* GZTQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZTQuestionViewController.h; sourceTree = "<group>"; };
+		E59519C31B6FE06300E34C9D /* GZTQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZTQuestionViewController.m; sourceTree = "<group>"; };
+		E59519C51B6FF81800E34C9D /* GZTJsonTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZTJsonTransfer.h; sourceTree = "<group>"; };
+		E59519C61B6FF81800E34C9D /* GZTJsonTransfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZTJsonTransfer.m; sourceTree = "<group>"; };
+		E59519C81B7046DC00E34C9D /* GZTUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZTUtilities.h; sourceTree = "<group>"; };
+		E59519C91B7046DC00E34C9D /* GZTUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZTUtilities.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +142,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E507CC731B6BD5F60002E509 /* libsqlite3.dylib in Frameworks */,
+				E507CC711B6BD5E70002E509 /* libz.dylib in Frameworks */,
+				E507CC6F1B6BD5DF0002E509 /* SystemConfiguration.framework in Frameworks */,
+				E507CC6D1B6BD5D70002E509 /* StoreKit.framework in Frameworks */,
+				E507CC6B1B6BD5CF0002E509 /* Security.framework in Frameworks */,
+				E507CC691B6BD5C70002E509 /* QuartzCore.framework in Frameworks */,
+				E507CC671B6BD5BB0002E509 /* CoreLocation.framework in Frameworks */,
+				E507CC651B6BD5B10002E509 /* CoreGraphics.framework in Frameworks */,
+				E507CC631B6BD5A70002E509 /* CFNetwork.framework in Frameworks */,
+				E507CC611B6BD59F0002E509 /* AudioToolbox.framework in Frameworks */,
+				E507CC5E1B6BD5150002E509 /* Parse.framework in Frameworks */,
+				E507CC5D1B6BD5150002E509 /* Bolts.framework in Frameworks */,
+				E507CC961B6EACD00002E509 /* ParseUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,9 +168,108 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E507CC471B6BD20E0002E509 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E507CC4B1B6BD25C0002E509 /* Course.h */,
+				E507CC4C1B6BD25C0002E509 /* Course.m */,
+				E507CC921B6E992F0002E509 /* GZTUser.h */,
+				E507CC931B6E992F0002E509 /* GZTUser.m */,
+				E507CC4E1B6BD26F0002E509 /* Lecture.h */,
+				E507CC4F1B6BD26F0002E509 /* Lecture.m */,
+				E507CC511B6BD2850002E509 /* Summary.h */,
+				E507CC521B6BD2850002E509 /* Summary.m */,
+				E507CC541B6BD2910002E509 /* Question.h */,
+				E507CC551B6BD2910002E509 /* Question.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E507CC491B6BD2280002E509 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E507CCB01B6F0AB90002E509 /* GZTLectureCell.h */,
+				E507CCB11B6F0AB90002E509 /* GZTLectureCell.m */,
+				E507CCB31B6F0ACE0002E509 /* GZTLectureCell.xib */,
+				E507CCA11B6EBEB00002E509 /* CourseCellTableViewCell.h */,
+				E507CCA21B6EBEB00002E509 /* CourseCellTableViewCell.m */,
+				E507CC9C1B6EBBF70002E509 /* CourseCell.xib */,
+				E59519BA1B6FD54800E34C9D /* QuestionView1.xib */,
+				E59519BC1B6FD77300E34C9D /* QuestionView1.h */,
+				E59519BD1B6FD77300E34C9D /* QuestionView1.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		E507CC4A1B6BD22E0002E509 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E507CC7D1B6BFB9A0002E509 /* GZTCourseViewController.h */,
+				E507CC7E1B6BFB9A0002E509 /* GZTCourseViewController.m */,
+				E507CCAA1B6ED69E0002E509 /* GZTLectureViewController.h */,
+				E507CCAB1B6ED69E0002E509 /* GZTLectureViewController.m */,
+				E507CC971B6EAF850002E509 /* GZTLoginViewController.h */,
+				E507CC981B6EAF850002E509 /* GZTLoginViewController.m */,
+				E507CC771B6BFA180002E509 /* GZTSettingViewController.h */,
+				E507CC781B6BFA180002E509 /* GZTSettingViewController.m */,
+				E59519C21B6FE06300E34C9D /* GZTQuestionViewController.h */,
+				E59519C31B6FE06300E34C9D /* GZTQuestionViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		E507CC571B6BD2DB0002E509 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				E507CCAD1B6F05240002E509 /* GZTGlobalModule.h */,
+				E507CCAE1B6F05240002E509 /* GZTGlobalModule.m */,
+				E507CC581B6BD2E90002E509 /* LibraryAPI.h */,
+				E507CC591B6BD2E90002E509 /* LibraryAPI.m */,
+				E507CC8A1B6E8B0B0002E509 /* LocalData.h */,
+				E507CC8B1B6E8B0B0002E509 /* LocalData.m */,
+				E507CC8D1B6E8B160002E509 /* ParseClient.h */,
+				E507CC8E1B6E8B160002E509 /* ParseClient.m */,
+				E59519C51B6FF81800E34C9D /* GZTJsonTransfer.h */,
+				E59519C61B6FF81800E34C9D /* GZTJsonTransfer.m */,
+				E59519C81B7046DC00E34C9D /* GZTUtilities.h */,
+				E59519C91B7046DC00E34C9D /* GZTUtilities.m */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		E507CC5F1B6BD5450002E509 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				E507CC951B6EACD00002E509 /* ParseUI.framework */,
+				E507CC721B6BD5F60002E509 /* libsqlite3.dylib */,
+				E507CC701B6BD5E70002E509 /* libz.dylib */,
+				E507CC6E1B6BD5DF0002E509 /* SystemConfiguration.framework */,
+				E507CC6C1B6BD5D70002E509 /* StoreKit.framework */,
+				E507CC6A1B6BD5CF0002E509 /* Security.framework */,
+				E507CC681B6BD5C70002E509 /* QuartzCore.framework */,
+				E507CC661B6BD5BB0002E509 /* CoreLocation.framework */,
+				E507CC641B6BD5B10002E509 /* CoreGraphics.framework */,
+				E507CC621B6BD5A70002E509 /* CFNetwork.framework */,
+				E507CC601B6BD59F0002E509 /* AudioToolbox.framework */,
+				E507CC5B1B6BD5150002E509 /* Bolts.framework */,
+				E507CC5C1B6BD5150002E509 /* Parse.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+		E507CC861B6E6FBA0002E509 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				E507CC871B6E75F10002E509 /* UIColor+PDD.h */,
+				E507CC881B6E75F10002E509 /* UIColor+PDD.m */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
 		E59518F61B6AB5ED0045044E = {
 			isa = PBXGroup;
 			children = (
+				E507CC5F1B6BD5450002E509 /* Framework */,
 				E59519011B6AB5ED0045044E /* CourseMirror */,
 				E595191E1B6AB5ED0045044E /* CourseMirrorTests */,
 				E59519001B6AB5ED0045044E /* Products */,
@@ -84,6 +288,11 @@
 		E59519011B6AB5ED0045044E /* CourseMirror */ = {
 			isa = PBXGroup;
 			children = (
+				E507CC861B6E6FBA0002E509 /* Utility */,
+				E507CC571B6BD2DB0002E509 /* API */,
+				E507CC4A1B6BD22E0002E509 /* Controller */,
+				E507CC491B6BD2280002E509 /* View */,
+				E507CC471B6BD20E0002E509 /* Model */,
 				E59519061B6AB5ED0045044E /* AppDelegate.h */,
 				E59519071B6AB5ED0045044E /* AppDelegate.m */,
 				E59519091B6AB5ED0045044E /* FirstViewController.h */,
@@ -204,9 +413,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E507CC9D1B6EBBF70002E509 /* CourseCell.xib in Resources */,
 				E59519111B6AB5ED0045044E /* Main.storyboard in Resources */,
+				E59519BB1B6FD54800E34C9D /* QuestionView1.xib in Resources */,
 				E59519161B6AB5ED0045044E /* LaunchScreen.xib in Resources */,
 				E59519131B6AB5ED0045044E /* Images.xcassets in Resources */,
+				E507CCB41B6F0ACE0002E509 /* GZTLectureCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,10 +436,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E59519C41B6FE06300E34C9D /* GZTQuestionViewController.m in Sources */,
+				E59519BE1B6FD77300E34C9D /* QuestionView1.m in Sources */,
+				E507CC991B6EAF850002E509 /* GZTLoginViewController.m in Sources */,
+				E507CC891B6E75F10002E509 /* UIColor+PDD.m in Sources */,
+				E507CC7F1B6BFB9A0002E509 /* GZTCourseViewController.m in Sources */,
+				E507CC5A1B6BD2E90002E509 /* LibraryAPI.m in Sources */,
+				E507CC8F1B6E8B160002E509 /* ParseClient.m in Sources */,
+				E507CCAC1B6ED69E0002E509 /* GZTLectureViewController.m in Sources */,
+				E507CC531B6BD2850002E509 /* Summary.m in Sources */,
+				E507CC501B6BD26F0002E509 /* Lecture.m in Sources */,
+				E59519CA1B7046DC00E34C9D /* GZTUtilities.m in Sources */,
+				E507CCB21B6F0AB90002E509 /* GZTLectureCell.m in Sources */,
+				E507CCAF1B6F05240002E509 /* GZTGlobalModule.m in Sources */,
 				E595190E1B6AB5ED0045044E /* SecondViewController.m in Sources */,
+				E507CC941B6E992F0002E509 /* GZTUser.m in Sources */,
+				E507CC8C1B6E8B0B0002E509 /* LocalData.m in Sources */,
+				E507CCA31B6EBEB00002E509 /* CourseCellTableViewCell.m in Sources */,
 				E59519081B6AB5ED0045044E /* AppDelegate.m in Sources */,
 				E595190B1B6AB5ED0045044E /* FirstViewController.m in Sources */,
+				E507CC561B6BD2910002E509 /* Question.m in Sources */,
+				E507CC791B6BFA180002E509 /* GZTSettingViewController.m in Sources */,
+				E59519C71B6FF81800E34C9D /* GZTJsonTransfer.m in Sources */,
 				E59519051B6AB5ED0045044E /* main.m in Sources */,
+				E507CC4D1B6BD25C0002E509 /* Course.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,7 +585,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CourseMirror/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -363,7 +600,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CourseMirror/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -422,6 +664,7 @@
 				E59519271B6AB5ED0045044E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E59519281B6AB5ED0045044E /* Build configuration list for PBXNativeTarget "CourseMirrorTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +673,7 @@
 				E595192A1B6AB5ED0045044E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

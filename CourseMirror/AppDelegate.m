@@ -7,16 +7,73 @@
 //
 
 #import "AppDelegate.h"
+#import "UIColor+PDD.h"
+#import "GZTLoginViewController.h"
+#import "GZTCourseViewController.h"
+#import "GZTSettingViewController.h"
+#import <Parse/Parse.h>
+#import "LibraryAPI.h"
+#import "GZTGlobalModule.h"
+#import "GZTUtilities.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<UITabBarControllerDelegate>
 
+@property (strong, nonatomic) GZTLoginViewController *loginViewController;
+@property (strong, nonatomic) GZTSettingViewController *settingViewController;
+@property (strong, nonatomic) GZTCourseViewController *courseViewController;
+
+@property (strong, nonatomic) UIViewController *savedViewController;
 @end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    
+    // [Optional] Power your app with Local Datastore. For more info, go to
+    // https://parse.com/docs/ios_guide#localdatastore/iOS
+    [Parse enableLocalDatastore];
+    
+    // Initialize Parse.
+    [Parse setApplicationId:@"c4Fz5plueUVfkqQ19vY9UI5xuzfzzflwWa2QiDjn"
+                  clientKey:@"mdLEt9R4Eyb6Z9OVdO9UsNTFrnuVahX7hOQwGeBL"];
+    
+    // [Optional] Track statistics around application opens.
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    
+    //init root controller
+    GZTCourseViewController *courseViewController = [[GZTCourseViewController alloc] init];
+    UINavigationController *courseNavViewController = [[UINavigationController alloc] initWithRootViewController:courseViewController];
+    [courseNavViewController.navigationBar setTranslucent:NO];
+    
+    GZTSettingViewController *settingViewController = [[GZTSettingViewController alloc] init];
+    self.settingViewController = settingViewController;
+    UINavigationController *settingsNavViewController = [[UINavigationController alloc] initWithRootViewController:settingViewController];
+    [settingsNavViewController.navigationBar setTranslucent:NO];
+    
+    self.tabBarController = [[UITabBarController alloc] init];
+    self.tabBarController.viewControllers = @[courseNavViewController,
+                                              settingsNavViewController
+                                              ];
+    self.tabBarController.delegate = self;
+    [self.tabBarController.tabBar setTranslucent:YES];
+    
+    self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:1];
+    
+    self.window.rootViewController = self.tabBarController;
+    [self.window makeKeyAndVisible];
+
+    // download data in advance
+    NSArray *cs = [[LibraryAPI sharedInstance] getCourses];
+    [[LibraryAPI sharedInstance] getLectures];
+    [[LibraryAPI sharedInstance] getQuestions];
+
+    
+    
+    
+    
     return YES;
 }
 
@@ -41,5 +98,31 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+    UINavigationController *navController = (UINavigationController *)viewController;
+    UIViewController *visibleViewController = [navController visibleViewController];
+    
+    
+    // Save currently visible view controller for follow-on checks
+    self.savedViewController = visibleViewController;
+}
+
+- (void)_customizeAppearance {
+    [[UIPageControl appearance] setPageIndicatorTintColor:[UIColor lightGrayColor]];
+    [[UIPageControl appearance] setCurrentPageIndicatorTintColor:[UIColor pddTextColor]];
+    [[UIPageControl appearance] setBackgroundColor:[UIColor clearColor]];
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor pddTextColor]];
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init]
+                                      forBarPosition:UIBarPositionAny
+                                          barMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
+    [[UITabBar appearance] setTintColor:[UIColor blackColor]];
+    [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
+}
+
 
 @end
