@@ -20,24 +20,10 @@
                     <rect key="frame" x="103" y="98" width="370" height="340"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZU-UB-TYl">
-                    <rect key="frame" x="8" y="509" width="59" height="30"/>
-                    <state key="normal" title="Previous">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USU-1o-Eer">
-                    <rect key="frame" x="546" y="509" width="32" height="30"/>
-                    <state key="normal" title="Next">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="next" destination="USU-1o-Eer" id="mS1-YL-6ES"/>
                 <outlet property="options" destination="JiO-xd-L01" id="vvg-zg-FYx"/>
-                <outlet property="previous" destination="WZU-UB-TYl" id="GsS-e1-xDk"/>
                 <outlet property="question" destination="UvQ-0j-Jiq" id="e7D-HK-ZA9"/>
             </connections>
             <point key="canvasLocation" x="232" y="270"/>

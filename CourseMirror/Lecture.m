@@ -11,13 +11,13 @@
 
 @implementation Lecture
 
--(id)initWithCid:(NSString*)cid Title:(NSString*)title date: (NSString *)date number:(NSString *)number{
+-(id)initWithCid:(NSString*)cid Title:(NSString*)title date: (NSString *)date number:(id)number questions: (NSArray *)questions{
     self = [super init];
     if(self){
         _cid = cid;
         _Title = title;
         _number = number;
-        
+        _questions = questions;
         //create date object
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"MM-dd-yyyy"];

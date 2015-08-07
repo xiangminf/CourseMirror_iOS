@@ -13,8 +13,9 @@
 @property (nonatomic, copy, readonly) NSString *desc, *subDesc;
 @property (nonatomic, copy, readonly) NSArray *options;
 
+@property (nonatomic, readonly) NSInteger type;
 
--(id)initWithQid: (NSString*)QuestionID desc:(NSString*)QuestionDescription subDesc:(NSString*)QuestionSubDescription options:(NSString*)options;
+-(id)initWithQid: (NSString*)QuestionID desc:(NSString*)QuestionDescription subDesc:(NSString*)QuestionSubDescription options:(NSString*)options type: (NSInteger)type;
 
 
 

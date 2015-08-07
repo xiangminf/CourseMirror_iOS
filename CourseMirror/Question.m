@@ -10,14 +10,14 @@
 
 @implementation Question
 
--(id)initWithQid: (NSString*)QuestionID desc:(NSString*)QuestionDescription subDesc:(NSString*)QuestionSubDescription options:(NSString*)options{
+-(id)initWithQid: (NSString*)QuestionID desc:(NSString*)QuestionDescription subDesc:(NSString*)QuestionSubDescription options:(NSString*)options type: (NSInteger)type{
     
     self = [super init];
     if(self){
         _Qid = QuestionID;
         _desc = QuestionDescription;
         _subDesc = QuestionSubDescription;
-        
+        _type = type;
         if(options){
             //parse options
             NSData *jsonData = [options dataUsingEncoding:NSUTF8StringEncoding];

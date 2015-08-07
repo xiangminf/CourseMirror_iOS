@@ -11,6 +11,9 @@
 #import "LibraryAPI.h"
 #import "GZTGlobalModule.h"
 #import "GZTLectureCell.h"
+#import "GZTUtilities.h"
+#import "GZTQuestionViewController.h"
+#import "GZTSummaryTableViewController.h"
 
 @interface GZTLectureViewController (){
     UITableView *lecTable;
@@ -68,7 +71,32 @@
     }
     
     // Configure the cell to show lectures
-//    cell.status = nil;
+    
+    UIImage *image;
+    NSDate *lectureDate = [lectures[indexPath.row] date];
+    NSDate *now = [NSDate date];
+    NSDate *twoDayAgo = [now dateByAddingTimeInterval:-60*60*24*2];
+
+    if([lectureDate compare:twoDayAgo] == NSOrderedAscending){
+        // lectureDate is earlier than twoDayAgo
+        image = [UIImage imageNamed:@"closeImage.png"];
+        cell.statusStr = @"closed";
+    }else{
+        if([lectureDate compare:now] == NSOrderedDescending){
+            // lectureDate is later than twoDayAgo
+            image = [UIImage imageNamed:@"upcomming.png"];
+            cell.statusStr = @"upcoming";
+        }else{
+            image = [UIImage imageNamed:@"openImage.png"];
+          //  openIndex = indexPath;
+            cell.statusStr = @"open";
+        }
+    }
+    cell.status.image = image;
+
+    
+    
+    //    cell.status = nil;
     cell.title.text = [lectures[indexPath.row] Title];
 
     
@@ -81,26 +109,36 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     GZTLectureCell *cell = (GZTLectureCell*)[tableView cellForRowAtIndexPath:indexPath];
     
+    //store selected lecture
     NSString *selectedLec = cell.title.text;
-    
-    
-    
-    // 1. Get the storyboard
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"GZTMain" bundle:nil];
-    
-    UIViewController *QController = (UIViewController *)
-    [storyboard instantiateViewControllerWithIdentifier: @"Question"];
-    QController.hidesBottomBarWhenPushed = YES;
-    
-    [self.navigationController pushViewController:QController animated:YES];
-
+    NSDictionary *d = [GZTUtilities DictionaryFromArray:lectures WithKey:@"Title"];
+    [GZTGlobalModule setSelectedLecture: [d objectForKey:selectedLec]];
 
     
+    
+    if( [cell.statusStr isEqualToString:@"closed"]){
+        
+       // GZTSummaryTableViewController   *SController = [[GZTSummaryTableViewController alloc] init];
+        
+        GZTSummaryTableViewController   *SController = [[GZTSummaryTableViewController alloc] initWithStyle:UITableViewStylePlain Lecture:[d objectForKey:selectedLec]];
+        SController.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:SController animated:YES];
+
+    }else if([cell.statusStr isEqualToString:@"open"]){
+        GZTQuestionViewController *QController = [[GZTQuestionViewController alloc] init];
+        QController.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:QController animated:YES];
+
+    }else{
+        [[[UIAlertView alloc] initWithTitle:@"Not Open!" message:@"You can't write reflection for uncomming lectures." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Done", nil] show];
+    }
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CourseCell" owner:self options:nil];
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"GZTLectureCell" owner:self options:nil];
     
     return   ((GZTLectureCell*)[nib objectAtIndex:0]).frame.size.height
     ;

@@ -7,6 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Lecture.h"
+#import "Course.h"
+#import "Summary.h"
+
 #import <Parse/Parse.h>
 
 @interface ParseClient : NSObject
@@ -14,4 +18,11 @@
 +(NSArray *) getCouses;
 +(NSArray *) getLectures;
 +(NSArray *) getQuestions;
+
+
++(void)setTokens: (NSArray *)tokens forUser: (PFUser *)user;
++(NSArray *)tokensforUser: (PFUser *)user;
++(NSArray *)allTokens;
++(Summary *)getSummaryForLecture:(Lecture*)lec;
++(NSDictionary *)getSummariesForCourse:(Course*)course;
 @end

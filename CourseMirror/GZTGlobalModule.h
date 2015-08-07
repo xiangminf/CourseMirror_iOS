@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "LibraryAPI.h"
+#import "GZTSettingViewController.h"
+#import "GZTCourseViewController.h"
+#import "GZTLectureViewController.h"
+
 
 @interface GZTGlobalModule : NSObject
 
@@ -18,6 +22,17 @@
 
 +(void) setSelectedLecture: (Lecture *)cid;
 +(Lecture *)selectedLecture;
+
++(void) setSettingViewController: (GZTSettingViewController *)vc;
++(GZTSettingViewController *) settingViewController;
+
++(void) setCourseViewController: (GZTCourseViewController *)vc;
++(GZTCourseViewController*) courseViewController;
+
++(void) setLectureViewController: (GZTLectureViewController *)vc;
++(GZTLectureViewController*) LectureViewController;
+
+
 
 
 @end

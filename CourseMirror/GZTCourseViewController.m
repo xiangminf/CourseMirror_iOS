@@ -61,18 +61,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    NSLog(@"%@",addedCourse);
-
-    NSLog(@"%@",[GZTUtilities indexKeyedDictionaryFromArray:addedCourse]);
-
     return [addedCourse count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *CellIdentifier = @"Cell";
     
-    CourseCellTableViewCell *cell = (CourseCellTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    CourseCellTableViewCell *cell = (CourseCellTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (cell == nil) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CourseCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
@@ -94,6 +89,8 @@
     
     //store selected cid
     [GZTGlobalModule setSelectedCid:cid];
+    Course *course = [[LibraryAPI sharedInstance] getCourseForCid:cid];
+    [[LibraryAPI sharedInstance] getSummariesForCourse:course];
     
     // go to lecture view
     GZTLectureViewController *lectureViewController = [[GZTLectureViewController alloc] init];

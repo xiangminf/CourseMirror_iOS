@@ -10,4 +10,8 @@
 
 @interface GZTQuestionViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
+@property(nonatomic, strong)UIButton *previous;
+@property(nonatomic, strong)UIButton *next;
+@property(nonatomic, strong)UIButton *submit;
+
 @end

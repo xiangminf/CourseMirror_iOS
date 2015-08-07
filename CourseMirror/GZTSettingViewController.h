@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GZTSettingViewController : UIViewController
+@interface GZTSettingViewController : UITableViewController
 
 @end

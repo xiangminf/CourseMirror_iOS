@@ -42,6 +42,7 @@
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
+
     
     //init root controller
     GZTCourseViewController *courseViewController = [[GZTCourseViewController alloc] init];
@@ -53,6 +54,9 @@
     UINavigationController *settingsNavViewController = [[UINavigationController alloc] initWithRootViewController:settingViewController];
     [settingsNavViewController.navigationBar setTranslucent:NO];
     
+    [GZTGlobalModule setCourseViewController:courseViewController];
+    [GZTGlobalModule setSettingViewController:settingViewController];
+    
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = @[courseNavViewController,
                                               settingsNavViewController
@@ -63,16 +67,18 @@
     self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:1];
     
     self.window.rootViewController = self.tabBarController;
+
     [self.window makeKeyAndVisible];
 
     // download data in advance
-    NSArray *cs = [[LibraryAPI sharedInstance] getCourses];
+    [[LibraryAPI sharedInstance] getCourses];
     [[LibraryAPI sharedInstance] getLectures];
     [[LibraryAPI sharedInstance] getQuestions];
 
-    
-    
-    
+
+    if( ![PFUser currentUser] ){
+        [self showLogin];
+    }
     
     return YES;
 }
@@ -124,5 +130,18 @@
     [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
 }
 
+
+-(void)showLogin{
+    if (nil == self.loginViewController) {
+        GZTLoginViewController *loginViewController = [[GZTLoginViewController alloc] init];
+        NSLog(@"_showLogin");
+        self.loginViewController = loginViewController;
+    }
+    [self.tabBarController presentViewController:self.loginViewController animated:YES completion:nil];
+}
+
+-(void)logout{
+    [PFUser logOut];
+}
 
 @end

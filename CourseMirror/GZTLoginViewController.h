@@ -6,8 +6,13 @@
 //  Copyright (c) 2015 Gangzheng Tong. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
+#import <UIKit/UIKit.h>
+#import <ParseUI/PFLogInViewController.h>
+#import <ParseUI/PFSignUpViewController.h>
 
-@interface GZTLoginViewController : NSObject
+
+@interface GZTLoginViewController : UIViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+
 
 @end

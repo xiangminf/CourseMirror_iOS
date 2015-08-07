@@ -12,6 +12,6 @@
 @property(nonatomic, weak) IBOutlet UILabel *question;
 
 @property(nonatomic, weak) IBOutlet UITableView *options;
-@property(nonatomic, weak) IBOutlet UIButton *previous;
-@property(nonatomic, weak) IBOutlet UIButton *next;
+
+
 @end

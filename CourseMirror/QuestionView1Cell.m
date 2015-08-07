@@ -1,15 +1,14 @@
-
 //
-//  GZTLectureViewController.m
+//  QuestionView1Cell.m
 //  CourseMirror
 //
-//  Created by 童罡正 on 8/2/15.
+//  Created by 童罡正 on 8/4/15.
 //  Copyright (c) 2015 Gangzheng Tong. All rights reserved.
 //
 
-#import "GZTLectureViewController.h"
+#import "QuestionView1Cell.h"
 
-@implementation GZTLectureViewController
+@implementation QuestionView1Cell
 
 - (void)awakeFromNib {
     // Initialization code

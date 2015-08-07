@@ -61,5 +61,36 @@
     return [localData getQuestions];
 }
 
+-(void)addToken: (NSString *)token forUser: (PFUser *)user{
+    [localData addToken:token forUser:user];
+}
+
+
+-(NSArray *)tokensforUser: (PFUser *)user{
+    return  [localData tokensforUser: user];
+}
+
+-(NSArray *)allTokens{
+    return [ParseClient allTokens];
+}
+
+-(Summary *)getSummaryForLecture:(Lecture*)lec{
+    return  [localData getSummaryForLecture:lec];
+}
+
+-(NSDictionary *)getSummariesForCourse:(Course*)course{
+    return  [localData getSummariesForCourse:course];
+}
+
+-(Course *)getCourseForCid: (NSString *)cid{
+
+    for(Course *c in [self getCourses]){
+        if( [[c cid] isEqualToString:cid]){
+            return c;
+        }
+    }
+    return nil;
+}
+
 
 @end

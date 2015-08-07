@@ -7,7 +7,6 @@
 //
 
 #import "LocalData.h"
-#import "ParseClient.h"
 #import "Lecture.h"
 
 @interface LocalData(){
@@ -64,12 +63,79 @@
 }
 
 -(NSArray *)getQuestions{
-    if(!_alllectures){
+    if(!_allquestions){
      _allquestions  =  [ParseClient getQuestions];
         
     }
     
     return _allquestions;
+}
+
+-(void)addToken: (NSString *)token forUser: (PFUser *)user{
+    if(!_user_tokens){
+        _user_tokens = [[NSMutableDictionary alloc] init];
+     
+    }
+    NSMutableArray *arr = [_user_tokens objectForKey:user[@"username"]];
+    if(!arr){
+        arr = [[NSMutableArray alloc] init];
+        [_user_tokens setObject:arr forKey:user[@"username"]];
+    }
+    if( ![arr containsObject: token]){
+        [arr addObject: token];
+        NSLog(@"%@ has been added", token);
+    }else{
+        NSLog(@"%@ is already there", token);
+    }
+
+    [ParseClient setTokens:arr forUser:user];
+}
+
+
+-(NSArray *)tokensforUser: (PFUser *)user{
+    NSArray *arr = [_user_tokens objectForKey:user[@"username"]];
+    if(!arr){
+        arr = [ParseClient tokensforUser:user];
+    }
+    return arr;
+}
+
+-(NSMutableArray *)getArrayforUser:(PFUser *)user{
+    NSMutableArray *arr = [_user_tokens objectForKey:user[@"username"]];
+    // if the array hasnt been created
+    if(!arr){
+        arr = [[NSMutableArray alloc] init];
+    }
+    
+    return arr;
+}
+
+-(Summary *)getSummaryForLecture:(Lecture*)lec{
+    if(!_lec_summary){
+        _lec_summary = [[NSMutableDictionary alloc] init];
+    }
+    
+    
+    NSArray *arr = [_lec_summary objectForKey:[lec Title]];
+    if(!arr){
+        [ParseClient getSummaryForLecture:lec];
+    }
+    
+    return [ParseClient getSummaryForLecture:lec];
+}
+
+-(NSDictionary *)getSummariesForCourse:(Course*)course{
+    if(! _course_dicOfsummary){
+        _course_dicOfsummary = [[NSMutableDictionary alloc] init];
+    }
+    NSDictionary *dicOfsummary =  [_course_dicOfsummary objectForKey:[course cid]];
+    if(dicOfsummary){
+        return dicOfsummary;
+    }
+    dicOfsummary =[ParseClient getSummariesForCourse:course];
+    [_course_dicOfsummary setObject:dicOfsummary forKey:[course cid]];
+    
+    return dicOfsummary;
 }
 
 

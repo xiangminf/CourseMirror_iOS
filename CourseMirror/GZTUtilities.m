@@ -27,6 +27,19 @@
 }
 
 
+
+//+(NSArray *)arrayFromObjects: (NSArray*)array forField:(id)field{
+//    NSMutableArray *newArray = [[NSMutableArray alloc] init
+//                                ];
+//    for(id object in array){
+//        [newArray addObject:[object field];
+//    }
+//        
+//    return newArray;
+//}
+
+
+
 //  Convert an array of objects to a dictionary whose key is certain field of the object
 //  Parameter: NSArray, NSString
 //  Return: NSDictionary
@@ -34,10 +47,26 @@
 {
     NSDictionary* dict = [NSDictionary dictionaryWithObjects:array
                                                      forKeys:[array valueForKey:key]];
+    
     return (NSDictionary *)dict;
 }
 
++(NSArray *)getArrayFromString:(NSString *)string{
+    
+    NSData *jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *localError;
+    NSArray *myArray = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&localError];
+    
+    return myArray;
+}
 
++(NSString *)getStringFromArray:(NSArray*) myArray{
+    NSError *localError;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:myArray options:NSJSONWritingPrettyPrinted error:&localError];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    return jsonString;
+}
 
 
 //-(void)updateParse{
@@ -79,4 +108,30 @@
 //    }];
 //}
 
+
++(BOOL)isString:(NSString*)string ofRegexPattern:(NSString*)pattern{
+    NSError *error;
+    NSRegularExpression *tokenFormat = [[NSRegularExpression alloc] initWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:&error];
+    
+    NSUInteger numberOfMatches = [tokenFormat numberOfMatchesInString:string options:0 range:NSMakeRange(0, [string length])];
+    
+    if(numberOfMatches == 1) return true;
+    
+    return false;
+    
+}
+
++(NSDictionary*)getDictionaryFromString:(NSString*)string{
+    NSDictionary *dic;
+    NSError *jsonError;
+    NSData* jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
+    if(jsonData){
+        dic = [NSJSONSerialization
+                                     JSONObjectWithData: jsonData
+                                     options: NSJSONReadingMutableContainers
+                                     error: &jsonError];
+    }
+
+    return dic;
+}
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface GZTLectureCell : UITableViewCell
+@property(nonatomic) NSString *statusStr;
 @property(nonatomic, weak) IBOutlet UILabel *title;
 
 @property(nonatomic, weak) IBOutlet UILabel *number;

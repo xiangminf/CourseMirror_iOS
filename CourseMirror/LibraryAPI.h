@@ -9,13 +9,24 @@
 #import <Foundation/Foundation.h>
 #import "Course.h"
 #import "Lecture.h"
+#import "Summary.h"
+#import <Parse/Parse.h>
 
 @interface LibraryAPI : NSObject
 +(LibraryAPI *)sharedInstance;
 -(NSArray *)getCourses;
+-(Course *)getCourseForCid: (NSString *)cid;
+
 -(NSArray *)getLectures;
 -(NSArray *)getLecturesForCid: (NSString *)cid;
 
+
 -(NSArray *)getQuestions;
+-(void)addToken: (NSString *)token forUser: (PFUser *)user;
+-(NSArray *)tokensforUser: (PFUser *)user;
+-(NSArray *)allTokens;
+
+-(Summary *)getSummaryForLecture:(Lecture*)lec;
+-(NSDictionary *)getSummariesForCourse:(Course*)course;
 
 @end
