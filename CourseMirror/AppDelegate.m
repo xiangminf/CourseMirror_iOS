@@ -28,8 +28,8 @@
 @implementation AppDelegate
 
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
     
     // [Optional] Power your app with Local Datastore. For more info, go to
     // https://parse.com/docs/ios_guide#localdatastore/iOS
@@ -42,7 +42,6 @@
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-
     
     //init root controller
     GZTCourseViewController *courseViewController = [[GZTCourseViewController alloc] init];
@@ -74,14 +73,98 @@
     [[LibraryAPI sharedInstance] getCourses];
     [[LibraryAPI sharedInstance] getLectures];
     [[LibraryAPI sharedInstance] getQuestions];
-
+    
+    
 
     if( ![PFUser currentUser] ){
         [self showLogin];
     }
-    
     return YES;
 }
+
+
+// Sent to the delegate to determine whether the log in request should be submitted to the server.
+- (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
+    // Check if both fields are completed
+    if (username && password && username.length && password.length) {
+        return YES; // Begin login process
+    }
+    
+    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) message:NSLocalizedString(@"Make sure you fill out all of the information!", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
+    return NO; // Interrupt login process
+}
+
+// Sent to the delegate when a PFUser is logged in.
+- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+    
+//    [[GZTGlobalModule settingViewController] viewDidLoad];
+//    [[GZTGlobalModule courseViewController] viewDidLoad];
+//    
+//    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    [[delegate tabBarController] viewDidLoad];
+
+    [[GZTGlobalModule settingViewController].tableView reloadData];
+    [[GZTGlobalModule courseViewController] refresh];
+    
+    [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+// Sent to the delegate when the log in attempt fails.
+- (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
+    NSLog(@"Failed to log in...");
+}
+
+// Sent to the delegate when the log in screen is dismissed.
+- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
+    NSLog(@"User dismissed the logInViewController");
+}
+
+
+#pragma mark - PFSignUpViewControllerDelegate
+
+// Sent to the delegate to determine whether the sign up request should be submitted to the server.
+- (BOOL)signUpViewController:(PFSignUpViewController *)signUpController shouldBeginSignUp:(NSDictionary *)info {
+    BOOL informationComplete = YES;
+    
+    // loop through all of the submitted data
+    for (id key in info) {
+        NSString *field = [info objectForKey:key];
+        if (!field || !field.length) { // check completion
+            informationComplete = NO;
+            break;
+        }
+    }
+    
+    // Display an alert if a field wasn't completed
+    if (!informationComplete) {
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) message:NSLocalizedString(@"Make sure you fill out all of the information!", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
+    }
+    
+    return informationComplete;
+}
+
+// Sent to the delegate when a PFUser is signed up.
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+ //   [signUpController dismissViewControllerAnimated:YES completion:NULL];
+
+    [[GZTGlobalModule settingViewController].tableView reloadData];
+    [[GZTGlobalModule courseViewController] refresh];
+    [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+// Sent to the delegate when the sign up attempt fails.
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
+    NSLog(@"Failed to sign up...");
+}
+
+// Sent to the delegate when the sign up screen is dismissed.
+- (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
+    NSLog(@"User dismissed the signUpViewController");
+}
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -132,16 +215,26 @@
 
 
 -(void)showLogin{
-    if (nil == self.loginViewController) {
-        GZTLoginViewController *loginViewController = [[GZTLoginViewController alloc] init];
-        NSLog(@"_showLogin");
-        self.loginViewController = loginViewController;
-    }
-    [self.tabBarController presentViewController:self.loginViewController animated:YES completion:nil];
+    
+    // Create the log in view controller
+    _loginViewController = [[GZTLoginViewController alloc] init];
+    [_loginViewController setDelegate:self]; // Set ourselves as the delegate
+    
+    // Create the sign up view controller
+    PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
+    [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+    
+    // Assign our sign up controller to be displayed from the login controller
+    [_loginViewController setSignUpController:signUpViewController];
+    
+    // Present the log in view controller
+    [self.tabBarController presentViewController:_loginViewController animated:YES completion:NULL];
 }
 
 -(void)logout{
     [PFUser logOut];
+    self.loginViewController = nil;
+    [self showLogin];
 }
 
 @end

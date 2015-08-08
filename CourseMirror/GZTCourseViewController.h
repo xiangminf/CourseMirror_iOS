@@ -14,7 +14,7 @@
 @property NSInteger numberOfLecture;
 @property (strong, nonatomic) NSArray *lectures;
 @property (weak, nonatomic)  UITableView *courseTableView;
-
+- (void)refresh;
 //@property (strong, nonatomic) NSString *selectedCourse;
 
 

@@ -128,9 +128,13 @@
         }
         case 2:
         {
-            GZTAddTokenViewController *addTokenViewController = [[GZTAddTokenViewController alloc] init];
             
-            [self.navigationController pushViewController:addTokenViewController animated:YES];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"GZTMain"
+                                                                 bundle: nil];
+           GZTAddTokenViewController *addTokenVC = [storyboard instantiateViewControllerWithIdentifier:@"addTokenVC"];
+    
+            
+            [self.navigationController pushViewController:addTokenVC animated:YES];
             break;
         }
         case 3:

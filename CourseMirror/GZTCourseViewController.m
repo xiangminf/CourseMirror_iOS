@@ -29,7 +29,7 @@
         self.title = @"Courses";
         self.tabBarItem.title = @"Courses";
         self.tabBarItem.image = [UIImage imageNamed:@"course"];
-        self.tableView.backgroundColor = [UIColor pddContentBackgroundColor];
+    //    self.tableView.backgroundColor = [UIColor pddContentBackgroundColor];
         self.tableView.separatorColor = [UIColor pddSeparatorColor];
         self.tableView.separatorInset = UIEdgeInsetsZero;
 
@@ -52,8 +52,7 @@
     
     // Hide extra table cell separators
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
-    
+
     self.tableView.separatorColor = [UIColor clearColor];
 
     [self refresh];
@@ -90,7 +89,7 @@
     //store selected cid
     [GZTGlobalModule setSelectedCid:cid];
     Course *course = [[LibraryAPI sharedInstance] getCourseForCid:cid];
-    [[LibraryAPI sharedInstance] getSummariesForCourse:course];
+//    [[LibraryAPI sharedInstance] getSummariesForCourse:course];
     
     // go to lecture view
     GZTLectureViewController *lectureViewController = [[GZTLectureViewController alloc] init];
@@ -111,7 +110,24 @@
 
 
 - (void)refresh{
-    addedCourse = [[LibraryAPI sharedInstance] getCourses];
+    if(![PFUser currentUser]){
+        [self.refreshControl endRefreshing];
+        return;
+    }
+    
+    NSArray *tokens = [[LibraryAPI sharedInstance] tokensforUser:[PFUser currentUser]];
+    if(!tokens){
+        [self.refreshControl endRefreshing];
+        addedCourse = @[];
+        return;
+    }
+    
+    addedCourse = [[LibraryAPI sharedInstance] addedCoursesForTokens:tokens];
+    [self.tableView reloadData];
+    [self.view setNeedsDisplay];
+    
+    [self.refreshControl endRefreshing];
+
 }
 
 @end

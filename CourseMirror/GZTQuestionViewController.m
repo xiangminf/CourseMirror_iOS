@@ -9,19 +9,14 @@
 
 #import "GZTQuestionViewController.h"
 #import "LibraryAPI.h"
-#import "QuestionView1.h"
-#import "QuestionView2.h"
+#import "GZTQuestionVC1.h"
+#import "GZTQuestionVC2.h"
 #import "Question.h"
 #import "QuestionView1Cell.h"
 
 @interface GZTQuestionViewController (){
-    QuestionView1 *view1;
-    QuestionView1 *view2;
-
-    NSMutableArray *allViews;
-    NSArray *questions;
-    NSArray *currentOptions;
-    UIView *subView;
+    NSMutableArray *contentVCs;
+    BOOL completed;
     int currentIndex;
 }
 
@@ -31,123 +26,85 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    completed = false;
 
-    questions = [[LibraryAPI sharedInstance] getQuestions];
-    allViews = [[NSMutableArray alloc] init];
+    _answers = [[NSMutableDictionary alloc] init];
+    // get array of Question
+    _questions = [[LibraryAPI sharedInstance] getQuestions];
+    contentVCs = [[NSMutableArray alloc] init];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"GZTMain"
+                                                             bundle: nil];
 
-    //build views array
-    for(Question *q in questions){
+    //build content controller array based on question type
+    for(Question *q in _questions){
         // multiply choice
         if( q.type == 2){
-            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"QuestionView1" owner:self options:nil];
+            GZTQuestionVC1 *vc2 = [storyboard instantiateViewControllerWithIdentifier:@"QuestionVC2"];
             
-            view1 = [nib objectAtIndex:0];
-            view1.options.delegate = self;
-            view1.options.dataSource = self;
+            vc2.titleText =[q desc];
+           
+            NSLog(@" vc2.label.text = [q desc]; = %@", [q desc]);
             
-            [view1 setNeedsDisplay];
-            [allViews addObject:view1];
+            //tobedone
+            [contentVCs addObject:vc2];
         }
-        
         //
         if( q.type == 1 ){
-            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"QuestionView2" owner:self options:nil];
-            
-            view2 = [nib objectAtIndex:0];
-            
-            [view2 setNeedsDisplay];
-            [allViews addObject:view2];
+            GZTQuestionVC1 *vc1 = [storyboard instantiateViewControllerWithIdentifier:@"QuestionVC1"];
+            vc1.titleText =[q desc];
+            [contentVCs addObject:vc1];
         }
     }// end building views array
     
-    [_next setTitle:@"NEXT" forState:UIControlStateNormal];
-    _next = [[UIButton alloc] initWithFrame:CGRectMake(10, self.view.frame.size.height-100, 40, 10)];
-             
     
-     //set button
-    [_next addTarget:self
-              action:@selector(goToNext:)
-    forControlEvents:UIControlEventTouchUpInside];
-    [_previous addTarget:self action:@selector(goToPre:) forControlEvents:UIControlEventTouchUpInside];
-    [_submit addTarget:self action:@selector(submit:) forControlEvents:UIControlEventTouchUpInside];
+    // Create page view controller
+    self.pageViewController = [storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
+    self.pageViewController.dataSource = self;
+    
+    UIViewController *startingViewController = [contentVCs objectAtIndex:0];
+    NSArray *viewControllers = @[startingViewController];
+    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    
+    // Change the size of page view controller
+    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 130);
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self addChildViewController:self.pageViewController];
+    [self.view addSubview:_pageViewController.view];
+    [self.pageViewController didMoveToParentViewController:self];
+    
+    
     _submit.hidden = YES;
-    
-    
     currentIndex = 0;
-    [self showDataForQuestionAtIndex:currentIndex];
-    [self.view addSubview:subView];
-    [self.view addSubview:_next];
-    [self.view addSubview:_previous];
-    
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button addTarget:self
-               action:@selector(goToNext:)
-     forControlEvents:UIControlEventTouchUpInside];
-    [button setTitle:@"next" forState:UIControlStateNormal];
-    button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
-    [self.view addSubview:button];
-    
-    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button2 addTarget:self
-               action:@selector(goToPre:)
-     forControlEvents:UIControlEventTouchUpInside];
-    [button2 setTitle:@"previous" forState:UIControlStateNormal];
-    button2.frame = CGRectMake(180.0, 210.0, 160.0, 40.0);
-    [self.view addSubview:button2];
-    
-    [self.view setNeedsDisplay];
-
-
 
 }
 
 
--(void)showDataForQuestionAtIndex:(int)index{
-    
-    //defensive code
-    if(index < allViews.count){
-        
-        subView = allViews[index];
-        
-        //if it's type2, reload the table
-        if( [(Question*)questions[index] type] == 2){
-            Question *q = questions[index];
-            currentOptions = [q options];
-             view1 = allViews[index];
-            [view1.options reloadData];
-        }
-    }else{
-        NSLog(@"invalid index %d", index);
-    }
-}
 
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return currentOptions.count;
-}
-
-// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
-// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    QuestionView1Cell *cell = (QuestionView1Cell *)[tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    if (cell == nil) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"QuestionView1Cell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
-    }
-    cell.text = currentOptions[indexPath.row];
-    
-    return  cell;
-}
+//-(void)showDataForQuestionAtIndex:(int)index{
+//    
+//    //defensive code
+//    if(index < allViews.count){
+//        
+//        subView = allViews[index];
+//        
+//        //if it's type2, reload the table
+//        if( [(Question*)questions[index] type] == 2){
+//            Question *q = questions[index];
+//            currentOptions = [q options];
+//             view1 = allViews[index];
+//            [view1.options reloadData];
+//        }
+//    }else{
+//        NSLog(@"invalid index %d", index);
+//    }
+//}
 
 
 
 
--(void)goToPre:(UIButton *)paramSender{
+
+- (IBAction)goToPre:(id)sender {
     _submit.hidden = YES;
     if(currentIndex == 0){
         NSLog(@"first page");
@@ -156,28 +113,51 @@
         if(currentIndex == 0){
             //in first page
         }
-        [self showDataForQuestionAtIndex:currentIndex];
+        [self.pageViewController setViewControllers:@[contentVCs[currentIndex]] direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
+
     }
 }
 
--(void)goToNext:(UIButton *)paramSender{
+
+- (IBAction)goToNext:(id)sender {
     
-    if(currentIndex == [questions count]-1){
+    if(currentIndex == [contentVCs count]-1){
         NSLog(@"last page");
-        _submit.hidden = NO;
+      //  _submit.hidden = NO;
     }else{
         currentIndex ++;
-        if(currentIndex == [questions count]-1){
+        if(currentIndex == [contentVCs count]-1){
             //in last page
             _submit.hidden = NO;
         }
-        [self showDataForQuestionAtIndex:currentIndex];
+        [self.pageViewController setViewControllers:@[contentVCs[currentIndex]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     }
 }
 
--(void)submit:(UIButton *)paramSender{
+
+- (IBAction)submit:(id)sender {
+    NSLog(@"submit pressed");
+    
+    int index = 0;
+    for(Question *q in _questions){
+        NSString *ans;
+        
+        ans = [contentVCs[index] answer];
+        if(!ans){
+              [[[UIAlertView alloc] initWithTitle:@"Not Completed." message:@"Please answer all questions." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Done", nil] show];
+            break;
+        }
+        [_answers setObject:ans forKey:[NSString stringWithFormat:@"q%d",index+1]];
+        index ++;
+    }
+    //completed
+    if(index ==  [contentVCs count]){
+        
+    }
     
 }
+
+
 
 
 

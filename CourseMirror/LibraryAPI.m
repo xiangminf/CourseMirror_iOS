@@ -92,5 +92,8 @@
     return nil;
 }
 
+-(NSArray *)addedCoursesForTokens: (NSArray *)tokens{
+    return  [localData addedCoursesForTokens:tokens];
+}
 
 @end

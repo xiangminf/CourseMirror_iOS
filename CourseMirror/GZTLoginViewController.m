@@ -8,28 +8,14 @@
 
 #import "GZTLoginViewController.h"
 #import "GZTGlobalModule.h"
+#import "AppDelegate.h"
 
 @implementation GZTLoginViewController
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    if (![PFUser currentUser]) { // No user logged in
-        // Create the log in view controller
-        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
-        [logInViewController setDelegate:self]; // Set ourselves as the delegate
-        
-        // Create the sign up view controller
-        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
-        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
-        
-        // Assign our sign up controller to be displayed from the login controller
-        [logInViewController setSignUpController:signUpViewController];
-        
-        // Present the log in view controller
-        [self presentViewController:logInViewController animated:YES completion:NULL];
     }
-}
 
 
 // Sent to the delegate to determine whether the log in request should be submitted to the server.
@@ -45,11 +31,17 @@
 
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-    [self dismissViewControllerAnimated:YES completion:NULL];
-    
     
     [[GZTGlobalModule settingViewController] viewDidLoad];
     [[GZTGlobalModule courseViewController] viewDidLoad];
+    
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [[delegate tabBarController] viewDidLoad];
+    
+    [logInController dismissViewControllerAnimated:NO completion:NULL];
+    [self dismissViewControllerAnimated:NO completion:NULL];
+
+    
 
     
 }
@@ -90,7 +82,9 @@
 
 // Sent to the delegate when a PFUser is signed up.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+    [signUpController dismissViewControllerAnimated:YES completion:NULL];
     [self dismissViewControllerAnimated:YES completion:NULL];
+
 }
 
 // Sent to the delegate when the sign up attempt fails.

@@ -83,12 +83,12 @@
     }
     if( ![arr containsObject: token]){
         [arr addObject: token];
-        NSLog(@"%@ has been added", token);
+        [ParseClient setTokens:arr forUser:user];
+        NSLog(@"%@ is added", token);
     }else{
         NSLog(@"%@ is already there", token);
     }
 
-    [ParseClient setTokens:arr forUser:user];
 }
 
 
@@ -138,5 +138,20 @@
     return dicOfsummary;
 }
 
+-(NSArray *)addedCoursesForTokens: (NSArray *)tokens{
+   
+    
+   NSMutableArray *addedCourses = [[NSMutableArray alloc] init];
+    NSArray *allCourses = [self getCourses];
+    for(NSString *token in tokens){
+        for(Course *c in allCourses){
+            if( [[c tokens] containsObject:token]){
+                [addedCourses addObject:c];
+                break;
+            }
+        }
+    }
+    return addedCourses;
+}
 
 @end

@@ -115,7 +115,7 @@
     [GZTGlobalModule setSelectedLecture: [d objectForKey:selectedLec]];
 
     
-    
+
     if( [cell.statusStr isEqualToString:@"closed"]){
         
        // GZTSummaryTableViewController   *SController = [[GZTSummaryTableViewController alloc] init];
@@ -124,8 +124,13 @@
         SController.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:SController animated:YES];
 
-    }else if([cell.statusStr isEqualToString:@"open"]){
-        GZTQuestionViewController *QController = [[GZTQuestionViewController alloc] init];
+    }else if([cell.statusStr isEqualToString:@"open"]){ 
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"GZTMain"
+                                                             bundle: nil];
+        
+       GZTQuestionViewController *QController = [storyboard instantiateViewControllerWithIdentifier:@"QuestionViewController"];
+        
+
         QController.hidesBottomBarWhenPushed = YES;
         
         [self.navigationController pushViewController:QController animated:YES];

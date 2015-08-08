@@ -103,6 +103,7 @@ static NSArray *allTokens;
 
 +(NSArray *)tokensforUser: (PFUser *)user{
     NSString *tokenString = user[@"token"];
+    if(!tokenString) return  nil;
     NSArray *arr = [GZTUtilities getArrayFromString:tokenString];
    // NSLog(@"(in ParseClient) get tokens from user: %@", arr);
     

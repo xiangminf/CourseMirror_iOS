@@ -37,6 +37,9 @@
 		E507CCAF1B6F05240002E509 /* GZTGlobalModule.m in Sources */ = {isa = PBXBuildFile; fileRef = E507CCAE1B6F05240002E509 /* GZTGlobalModule.m */; };
 		E507CCB21B6F0AB90002E509 /* GZTLectureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E507CCB11B6F0AB90002E509 /* GZTLectureCell.m */; };
 		E507CCB41B6F0ACE0002E509 /* GZTLectureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E507CCB31B6F0ACE0002E509 /* GZTLectureCell.xib */; };
+		E53673B61B75556A00E141F4 /* GZTMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E53673B51B75556A00E141F4 /* GZTMain.storyboard */; };
+		E53673B91B75562D00E141F4 /* GZTQuestionVC1.m in Sources */ = {isa = PBXBuildFile; fileRef = E53673B81B75562D00E141F4 /* GZTQuestionVC1.m */; };
+		E53673BC1B75563900E141F4 /* GZTQuestionVC2.m in Sources */ = {isa = PBXBuildFile; fileRef = E53673BB1B75563900E141F4 /* GZTQuestionVC2.m */; };
 		E59519051B6AB5ED0045044E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E59519041B6AB5ED0045044E /* main.m */; };
 		E59519081B6AB5ED0045044E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E59519071B6AB5ED0045044E /* AppDelegate.m */; };
 		E595190B1B6AB5ED0045044E /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E595190A1B6AB5ED0045044E /* FirstViewController.m */; };
@@ -45,13 +48,9 @@
 		E59519131B6AB5ED0045044E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E59519121B6AB5ED0045044E /* Images.xcassets */; };
 		E59519161B6AB5ED0045044E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E59519141B6AB5ED0045044E /* LaunchScreen.xib */; };
 		E59519221B6AB5ED0045044E /* CourseMirrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E59519211B6AB5ED0045044E /* CourseMirrorTests.m */; };
-		E59519BB1B6FD54800E34C9D /* QuestionView1.xib in Resources */ = {isa = PBXBuildFile; fileRef = E59519BA1B6FD54800E34C9D /* QuestionView1.xib */; };
-		E59519BE1B6FD77300E34C9D /* QuestionView1.m in Sources */ = {isa = PBXBuildFile; fileRef = E59519BD1B6FD77300E34C9D /* QuestionView1.m */; };
 		E59519C41B6FE06300E34C9D /* GZTQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59519C31B6FE06300E34C9D /* GZTQuestionViewController.m */; };
 		E59519C71B6FF81800E34C9D /* GZTJsonTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = E59519C61B6FF81800E34C9D /* GZTJsonTransfer.m */; };
 		E59519CA1B7046DC00E34C9D /* GZTUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E59519C91B7046DC00E34C9D /* GZTUtilities.m */; };
-		E59519CC1B71993A00E34C9D /* QuestionView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = E59519CB1B71993A00E34C9D /* QuestionView2.xib */; };
-		E59519CF1B71994D00E34C9D /* QuestionView2.m in Sources */ = {isa = PBXBuildFile; fileRef = E59519CE1B71994D00E34C9D /* QuestionView2.m */; };
 		E59519D21B71A44800E34C9D /* QuestionView1Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = E59519D11B71A44800E34C9D /* QuestionView1Cell.m */; };
 		E59519D41B71A45300E34C9D /* QuestionView1Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E59519D31B71A45300E34C9D /* QuestionView1Cell.xib */; };
 		E59519D71B71C36100E34C9D /* PDDAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59519D61B71C36100E34C9D /* PDDAboutViewController.m */; };
@@ -125,6 +124,11 @@
 		E507CCB01B6F0AB90002E509 /* GZTLectureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZTLectureCell.h; sourceTree = "<group>"; };
 		E507CCB11B6F0AB90002E509 /* GZTLectureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZTLectureCell.m; sourceTree = "<group>"; };
 		E507CCB31B6F0ACE0002E509 /* GZTLectureCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GZTLectureCell.xib; sourceTree = "<group>"; };
+		E53673B51B75556A00E141F4 /* GZTMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GZTMain.storyboard; sourceTree = "<group>"; };
+		E53673B71B75562D00E141F4 /* GZTQuestionVC1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZTQuestionVC1.h; sourceTree = "<group>"; };
+		E53673B81B75562D00E141F4 /* GZTQuestionVC1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZTQuestionVC1.m; sourceTree = "<group>"; };
+		E53673BA1B75563900E141F4 /* GZTQuestionVC2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZTQuestionVC2.h; sourceTree = "<group>"; };
+		E53673BB1B75563900E141F4 /* GZTQuestionVC2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZTQuestionVC2.m; sourceTree = "<group>"; };
 		E59518FF1B6AB5ED0045044E /* CourseMirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CourseMirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E59519031B6AB5ED0045044E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E59519041B6AB5ED0045044E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -140,18 +144,12 @@
 		E595191B1B6AB5ED0045044E /* CourseMirrorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CourseMirrorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E59519201B6AB5ED0045044E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E59519211B6AB5ED0045044E /* CourseMirrorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseMirrorTests.m; sourceTree = "<group>"; };
-		E59519BA1B6FD54800E34C9D /* QuestionView1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionView1.xib; sourceTree = "<group>"; };
-		E59519BC1B6FD77300E34C9D /* QuestionView1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionView1.h; sourceTree = "<group>"; };
-		E59519BD1B6FD77300E34C9D /* QuestionView1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionView1.m; sourceTree = "<group>"; };
 		E59519C21B6FE06300E34C9D /* GZTQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZTQuestionViewController.h; sourceTree = "<group>"; };
 		E59519C31B6FE06300E34C9D /* GZTQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZTQuestionViewController.m; sourceTree = "<group>"; };
 		E59519C51B6FF81800E34C9D /* GZTJsonTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZTJsonTransfer.h; sourceTree = "<group>"; };
 		E59519C61B6FF81800E34C9D /* GZTJsonTransfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZTJsonTransfer.m; sourceTree = "<group>"; };
 		E59519C81B7046DC00E34C9D /* GZTUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZTUtilities.h; sourceTree = "<group>"; };
 		E59519C91B7046DC00E34C9D /* GZTUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZTUtilities.m; sourceTree = "<group>"; };
-		E59519CB1B71993A00E34C9D /* QuestionView2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionView2.xib; sourceTree = "<group>"; };
-		E59519CD1B71994D00E34C9D /* QuestionView2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionView2.h; sourceTree = "<group>"; };
-		E59519CE1B71994D00E34C9D /* QuestionView2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionView2.m; sourceTree = "<group>"; };
 		E59519D01B71A44800E34C9D /* QuestionView1Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionView1Cell.h; sourceTree = "<group>"; };
 		E59519D11B71A44800E34C9D /* QuestionView1Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionView1Cell.m; sourceTree = "<group>"; };
 		E59519D31B71A45300E34C9D /* QuestionView1Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionView1Cell.xib; sourceTree = "<group>"; };
@@ -240,12 +238,6 @@
 				E507CCA11B6EBEB00002E509 /* CourseCellTableViewCell.h */,
 				E507CCA21B6EBEB00002E509 /* CourseCellTableViewCell.m */,
 				E507CC9C1B6EBBF70002E509 /* CourseCell.xib */,
-				E59519CB1B71993A00E34C9D /* QuestionView2.xib */,
-				E59519CD1B71994D00E34C9D /* QuestionView2.h */,
-				E59519CE1B71994D00E34C9D /* QuestionView2.m */,
-				E59519BA1B6FD54800E34C9D /* QuestionView1.xib */,
-				E59519BC1B6FD77300E34C9D /* QuestionView1.h */,
-				E59519BD1B6FD77300E34C9D /* QuestionView1.m */,
 				E59519D01B71A44800E34C9D /* QuestionView1Cell.h */,
 				E59519D11B71A44800E34C9D /* QuestionView1Cell.m */,
 				E59519D31B71A45300E34C9D /* QuestionView1Cell.xib */,
@@ -267,8 +259,6 @@
 				E507CC981B6EAF850002E509 /* GZTLoginViewController.m */,
 				E507CC771B6BFA180002E509 /* GZTSettingViewController.h */,
 				E507CC781B6BFA180002E509 /* GZTSettingViewController.m */,
-				E59519C21B6FE06300E34C9D /* GZTQuestionViewController.h */,
-				E59519C31B6FE06300E34C9D /* GZTQuestionViewController.m */,
 				E59519D51B71C36100E34C9D /* PDDAboutViewController.h */,
 				E59519D61B71C36100E34C9D /* PDDAboutViewController.m */,
 				E59519D81B71C6BC00E34C9D /* GZTNotificationController.h */,
@@ -279,6 +269,12 @@
 				E59519E21B71C75E00E34C9D /* GZTAddTokenViewController.m */,
 				E5951A2B1B7400F100E34C9D /* GZTSummaryTableViewController.h */,
 				E5951A2C1B7400F100E34C9D /* GZTSummaryTableViewController.m */,
+				E59519C21B6FE06300E34C9D /* GZTQuestionViewController.h */,
+				E59519C31B6FE06300E34C9D /* GZTQuestionViewController.m */,
+				E53673B71B75562D00E141F4 /* GZTQuestionVC1.h */,
+				E53673B81B75562D00E141F4 /* GZTQuestionVC1.m */,
+				E53673BA1B75563900E141F4 /* GZTQuestionVC2.h */,
+				E53673BB1B75563900E141F4 /* GZTQuestionVC2.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -370,6 +366,7 @@
 				E595190C1B6AB5ED0045044E /* SecondViewController.h */,
 				E595190D1B6AB5ED0045044E /* SecondViewController.m */,
 				E595190F1B6AB5ED0045044E /* Main.storyboard */,
+				E53673B51B75556A00E141F4 /* GZTMain.storyboard */,
 				E59519121B6AB5ED0045044E /* Images.xcassets */,
 				E59519141B6AB5ED0045044E /* LaunchScreen.xib */,
 				E59519021B6AB5ED0045044E /* Supporting Files */,
@@ -491,13 +488,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E59519CC1B71993A00E34C9D /* QuestionView2.xib in Resources */,
 				E507CC9D1B6EBBF70002E509 /* CourseCell.xib in Resources */,
 				E59519F01B72AF5900E34C9D /* AddTokenView.xib in Resources */,
 				E59519D41B71A45300E34C9D /* QuestionView1Cell.xib in Resources */,
 				E59519111B6AB5ED0045044E /* Main.storyboard in Resources */,
-				E59519BB1B6FD54800E34C9D /* QuestionView1.xib in Resources */,
 				E59519161B6AB5ED0045044E /* LaunchScreen.xib in Resources */,
+				E53673B61B75556A00E141F4 /* GZTMain.storyboard in Resources */,
 				E59519131B6AB5ED0045044E /* Images.xcassets in Resources */,
 				E59519EE1B72AD7C00E34C9D /* CourseMIRRORNotices.txt in Resources */,
 				E507CCB41B6F0ACE0002E509 /* GZTLectureCell.xib in Resources */,
@@ -519,7 +515,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E59519C41B6FE06300E34C9D /* GZTQuestionViewController.m in Sources */,
-				E59519BE1B6FD77300E34C9D /* QuestionView1.m in Sources */,
+				E53673B91B75562D00E141F4 /* GZTQuestionVC1.m in Sources */,
 				E5951A301B74011E00E34C9D /* Summary.m in Sources */,
 				E59519E01B71C73B00E34C9D /* PDDWebViewController.m in Sources */,
 				E59519E31B71C75E00E34C9D /* GZTAddTokenViewController.m in Sources */,
@@ -548,9 +544,9 @@
 				E507CC791B6BFA180002E509 /* GZTSettingViewController.m in Sources */,
 				E59519C71B6FF81800E34C9D /* GZTJsonTransfer.m in Sources */,
 				E59519D21B71A44800E34C9D /* QuestionView1Cell.m in Sources */,
+				E53673BC1B75563900E141F4 /* GZTQuestionVC2.m in Sources */,
 				E59519051B6AB5ED0045044E /* main.m in Sources */,
 				E507CC4D1B6BD25C0002E509 /* Course.m in Sources */,
-				E59519CF1B71994D00E34C9D /* QuestionView2.m in Sources */,
 				E59519E61B729F6A00E34C9D /* UIFont+PDD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

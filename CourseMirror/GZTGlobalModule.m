@@ -12,8 +12,10 @@
 @implementation GZTGlobalModule
 static NSString *selectedCid = @"";
 static Lecture *selectedLecture;
-static NSArray *alllectures;
+static Course *selectedCourse;
 
+static NSArray *alllectures;
+static NSString * activeToken;
 static GZTSettingViewController *sc;
 static GZTCourseViewController *cc;
 static GZTLectureViewController *lc;
@@ -24,6 +26,13 @@ static GZTLectureViewController *lc;
 }
 +(NSString *)selectedCid{
     return selectedCid;
+}
+
++(void) setSelectedCourse: (Course *)c{
+    selectedCourse = c;
+}
++(Course *)selectedCourse{
+    return selectedCourse;
 }
 
 +(NSArray *)allLectures{
@@ -40,6 +49,7 @@ static GZTLectureViewController *lc;
 +(Lecture *)selectedLecture{
     return selectedLecture;
 }
+
 
 
 +(void) setSettingViewController: (GZTSettingViewController *)vc{
@@ -63,5 +73,24 @@ static GZTLectureViewController *lc;
     return lc;
 }
 
++(void) activeToken: (NSString *)token {
+    activeToken = token;
+}
 
+
+
++(NSString *)getActiveToken{
+    NSArray *tokens =[[LibraryAPI sharedInstance] tokensforUser:[PFUser currentUser]];
+
+    Course *c = [self selectedCourse];
+    
+    // find active token
+    for(id token in tokens){
+        if( [[c tokens] containsObject:token]){
+            return token;
+        }
+    }
+    
+    return nil;
+}
 @end

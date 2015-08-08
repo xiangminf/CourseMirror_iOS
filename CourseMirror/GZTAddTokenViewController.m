@@ -11,34 +11,23 @@
 #import "ParseClient.h"
 #import "GZTUtilities.h"
 #import "LibraryAPI.h"
+#import "GZTGlobalModule.h"
 
 @interface GZTAddTokenViewController (){
-    UIView *view;
+    UIViewController *addTokenVC;
+    NSArray *specialTokens;
 }
 
 @end
 
 @implementation GZTAddTokenViewController
 
--(void)viewWillLayoutSubviews{
-    [view setFrame:CGRectMake(0, 0, self.view.frame.size.height, self.view.frame.size.width)];
-}
 
 - (void)viewDidLoad {
+    specialTokens = [[NSArray alloc] initWithObjects:@"t2015", @"t2014", nil];
     [super viewDidLoad];
-    NSLog(@"this is addtokenview controller");
-    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"AddTokenView" owner:self options:nil];
-    AddToken *tokenView = [nib objectAtIndex:0];
 
     
-    [tokenView.addButton addTarget:self
-               action:@selector(addMethod:)
-     forControlEvents:UIControlEventTouchUpInside];
-    
-    view = tokenView;
-    [self.view addSubview:view];
-    
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,37 +35,36 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
--(void)addMethod{
+- (IBAction)addMethod:(id)sender {
     PFUser *currentUser = [PFUser currentUser];
     
-    NSString *myToken = _tokenText.text;
+    NSString *myToken = _textField.text;
     myToken = [myToken lowercaseString];
+    
+    
+    
     
     BOOL valid = [GZTUtilities isString:myToken ofRegexPattern:@"[a-z][0-9][0-9][0-9][0-9]"];
     BOOL existing = [[[LibraryAPI sharedInstance] allTokens] containsObject:myToken];
     
+    //notification enabled
+    if([specialTokens containsObject:myToken]){
+        [[GZTGlobalModule settingViewController].tableView reloadData];
+    }
+    
     if(valid && existing){
         [[LibraryAPI sharedInstance] addToken:myToken forUser:currentUser];
-        _tokenText.text = @"";
+        _textField.text = @"";
+        
+        [[GZTGlobalModule courseViewController] refresh];
         
         [[[UIAlertView alloc] initWithTitle:@"Token Added" message:@"Go to Courses and pull down to refresh!" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Done", nil] show];
         
     }else{
-         [[[UIAlertView alloc] initWithTitle:@"Invalid or non-existing token" message:@"Please input a valid token, e.g: a1234" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Done", nil] show];
+        [[[UIAlertView alloc] initWithTitle:@"Invalid or non-existing token" message:@"Please input a valid token, e.g: a1234" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Done", nil] show];
     }
     
     
-    
 }
-
 @end

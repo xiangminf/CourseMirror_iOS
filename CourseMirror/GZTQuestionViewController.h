@@ -8,10 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GZTQuestionViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
-@property(nonatomic, strong)UIButton *previous;
-@property(nonatomic, strong)UIButton *next;
-@property(nonatomic, strong)UIButton *submit;
+@interface GZTQuestionViewController : UIViewController<UIPageViewControllerDataSource>
+
+
+- (IBAction)goToPre:(id)sender;
+- (IBAction)submit:(id)sender;
+- (IBAction)goToNext:(id)sender;
+
+
+@property (strong, nonatomic) UIPageViewController *pageViewController;
+@property (strong, nonatomic) NSArray *questions;
+@property (strong, nonatomic) NSMutableDictionary *answers;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *pre;
+@property (weak, nonatomic) IBOutlet UIButton *submit;
+
+@property (weak, nonatomic) IBOutlet UIButton *next;
 
 @end

@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface GZTAddTokenViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+- (IBAction)addMethod:(id)sender;
 
-@property(strong, nonatomic) UIButton* addTokenButton;
-@property(strong, nonatomic) UITextField* tokenText;
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
+
 
 @end

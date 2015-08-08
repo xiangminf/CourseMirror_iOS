@@ -28,5 +28,5 @@
 
 -(Summary *)getSummaryForLecture:(Lecture*)lec;
 -(NSDictionary *)getSummariesForCourse:(Course*)course;
-
+-(NSArray *)addedCoursesForTokens: (NSArray *)tokens;
 @end
