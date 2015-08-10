@@ -95,5 +95,16 @@
 -(NSArray *)addedCoursesForTokens: (NSArray *)tokens{
     return  [localData addedCoursesForTokens:tokens];
 }
+-(NSDictionary *)downloadedImages{
+    return [localData downloadImages];
+}
+
+-(void)sync{
+    [localData sync];
+}
+
+-(void)saveData{
+    [localData saveData];
+}
 
 @end

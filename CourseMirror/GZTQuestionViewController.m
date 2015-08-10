@@ -13,6 +13,7 @@
 #import "GZTQuestionVC2.h"
 #import "Question.h"
 #import "QuestionView1Cell.h"
+#import "GZTGlobalModule.h"
 
 @interface GZTQuestionViewController (){
     NSMutableArray *contentVCs;
@@ -102,8 +103,6 @@
 
 
 
-
-
 - (IBAction)goToPre:(id)sender {
     _submit.hidden = YES;
     if(currentIndex == 0){
@@ -142,22 +141,57 @@
     for(Question *q in _questions){
         NSString *ans;
         
-        ans = [contentVCs[index] answer];
+        
+        if( q.type == 1){
+            ans = [[(GZTQuestionVC1*)contentVCs[index] textView] text];
+        }else{
+            ans = [contentVCs[index] answer];
+
+        }
+        
         if(!ans){
               [[[UIAlertView alloc] initWithTitle:@"Not Completed." message:@"Please answer all questions." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Done", nil] show];
             break;
         }
-        [_answers setObject:ans forKey:[NSString stringWithFormat:@"q%d",index+1]];
+        [_answers setObject:ans forKey: [q Qid]];
         index ++;
     }
     //completed
     if(index ==  [contentVCs count]){
+        index = 0;
+        PFObject *reflection = [PFObject objectWithClassName:@"Reflection"];
+        
+        reflection[@"lecture_number"] = [[GZTGlobalModule selectedLecture] number];
+        
+        reflection[@"cid"] = [[GZTGlobalModule selectedLecture] cid];
+        reflection[@"user"] =[GZTGlobalModule getActiveToken];
+        for(Question *q in _questions){
+            reflection[[q Qid]] = [_answers objectForKey:[q Qid]];
+
+            index ++;
+            //[NSString stringWithFormat:@"%@||Rating: %d", s0, (int)i0];
+        }
+    [reflection saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            // The object has been saved.
+            [[[UIAlertView alloc] initWithTitle:@"Submitted" message:@"Thank you!" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Done", nil] show];
+            
+        } else {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Please check network!" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Done", nil] show];            }
+    }];
         
     }
-    
+
 }
 
-
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    } else {
+        NSLog(@"Clicked button index other than 0");
+        // Add another action here
+    }
+}
 
 
 

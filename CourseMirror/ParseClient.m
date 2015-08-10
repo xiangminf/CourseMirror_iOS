@@ -17,6 +17,27 @@
 
 static NSArray *allTokens;
 
++(NSDictionary *)downloadImages{
+    NSMutableDictionary *key_image = [[NSMutableDictionary alloc] init];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Image"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+        if(objects){
+            for(PFObject *object in objects){
+                 PFFile *userImageFile = object[@"image"];
+                [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                    if (!error) {
+                        UIImage *image = [UIImage imageWithData:imageData];
+                        [key_image setObject:image forKey:object[@"key"]];
+                    }
+                }];
+            }
+        }
+    }];
+    
+    return key_image;
+}
 
 +(NSArray *) getCouses{
     __block NSMutableArray *courses = [[NSMutableArray alloc] init];
@@ -28,7 +49,7 @@ static NSArray *allTokens;
             // The find succeeded.
             for (PFObject *object in objects) {
                 
-                Course *course = [[Course alloc] initWithCid:object[@"cid"] Title:object[@"Title"] URL:object[@"URL"] Questions:object[@"questions"] Time:object[@"time"] Tokens:object[@"tokens"]];
+                Course *course = [[Course alloc] initWithCid:object[@"cid"] Title:object[@"Title"] URL:object[@"URL"] Questions:object[@"questions"] Time:object[@"time"] Tokens:object[@"tokens"] image:object[@"cid"]];
                 
                 [courses addObject: course];
             }

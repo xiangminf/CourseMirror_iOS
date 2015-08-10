@@ -32,9 +32,10 @@
 +(void) setLectureViewController: (GZTLectureViewController *)vc;
 +(GZTLectureViewController*) LectureViewController;
 
-+(void) activeToken: (NSString *)token;
+//+(void) activeToken: (NSString *)token;
 +(NSString *)getActiveToken;
 
 +(void) setSelectedCourse: (Course *)c;
 +(Course *)selectedCourse;
+
 @end

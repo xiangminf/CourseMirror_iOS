@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GZTNotificationController : UIViewController
+@interface GZTNotificationController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+
+
+@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UITableView *table;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIButton *resetButton;
+@property (weak, nonatomic) IBOutlet UIButton *pushButton;
+
+- (IBAction)resetMethod:(id)sender;
+- (IBAction)pushMethod:(id)sender;
+
+
 
 @end

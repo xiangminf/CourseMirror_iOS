@@ -1,0 +1,13 @@
+PODS:
+  - DZNEmptyDataSet (1.7)
+  - SlackTextViewController (1.6)
+
+DEPENDENCIES:
+  - DZNEmptyDataSet
+  - SlackTextViewController
+
+SPEC CHECKSUMS:
+  DZNEmptyDataSet: 896f8efb3b0961c5ccb59d4959ccf9280854aa3d
+  SlackTextViewController: 84e1e4b7f12a8e3691cf97ca61c934b99058a2e8
+
+COCOAPODS: 0.38.2

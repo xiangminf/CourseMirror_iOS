@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface Course : NSObject
 @property (nonatomic, copy, readonly) NSString *Title, *URL, *cid;
 @property (nonatomic, copy, readonly) NSArray *tokens,  *questions;
+@property (nonatomic, copy, readonly) NSString *imageName;
 
 -(id)initWithCid:(NSString*)cid Title:(NSString*)Title;
 
--(id)initWithCid:(NSString*)cid Title:(NSString*)Title URL:(NSString *)URL Questions: (NSString *)questions Time: (NSString *)time Tokens:(NSString *)tokens;
+-(id)initWithCid:(NSString*)cid Title:(NSString*)Title URL:(NSString *)URL Questions: (NSString *)questions Time: (NSString *)time Tokens:(NSString *)tokens image:(NSString *)imageName;
 
 @end

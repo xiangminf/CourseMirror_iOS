@@ -24,4 +24,6 @@
 +(NSDictionary*)getDictionaryFromString:(NSString*)string;
 
 +(BOOL)isString:(NSString*)string ofRegexPattern:(NSString*)pattern;
+
++(void)uploadImageWithName:(NSString*)name key:(NSString*)key;
 @end

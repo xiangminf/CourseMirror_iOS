@@ -13,7 +13,7 @@
 #import "GZTLectureViewController.h"
 #import "GZTGlobalModule.h"
 #import "GZTUtilities.h"
-
+#import "GZTAddTokenViewController.h"
 @interface GZTCourseViewController (){
     NSDictionary *cid_token;
     NSArray *addedCourse ;
@@ -26,6 +26,8 @@
 -(id)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle: style];
     if(self){
+        [self refresh];
+        
         self.title = @"Courses";
         self.tabBarItem.title = @"Courses";
         self.tabBarItem.image = [UIImage imageNamed:@"course"];
@@ -34,6 +36,7 @@
         self.tableView.separatorInset = UIEdgeInsetsZero;
 
     }
+    NSLog(@"ViewdidLoad in C vc %@", addedCourse);
     
     return self;
 }
@@ -41,6 +44,8 @@
 
 -(void) viewDidLoad{
     [super viewDidLoad];
+    self.tableView.emptyDataSetDelegate = self;
+    self.tableView.emptyDataSetSource = self;
     
     // set refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -51,11 +56,11 @@
                   forControlEvents:UIControlEventValueChanged];
     
     // Hide extra table cell separators
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.tableFooterView = [UIView new];
 
     self.tableView.separatorColor = [UIColor clearColor];
 
-    [self refresh];
+   // [self refresh];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -74,9 +79,11 @@
     
     cell.title.text =[(Course*)addedCourse[indexPath.row] Title];
     cell.cid.text =[(Course*)addedCourse[indexPath.row] cid];
-    //cell.textLabel.text = [(Course*)addedCourse[indexPath.row] Title];
+    UIImage *img = [[[LibraryAPI sharedInstance] downloadedImages] objectForKey:[(Course*)addedCourse[indexPath.row] cid]];
     
-    //cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell.thumbnailImageView clipsToBounds];
+    [cell.thumbnailImageView setNeedsDisplay];
+    cell.thumbnailImageView.image = img;
     
     return cell;
 }
@@ -86,15 +93,19 @@
     CourseCellTableViewCell *cell = (CourseCellTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
     NSString *cid = cell.cid.text;
     
-    //store selected cid
+    //store selected cid and course
+    NSDictionary *d = [GZTUtilities DictionaryFromArray:addedCourse WithKey:@"cid"];
     [GZTGlobalModule setSelectedCid:cid];
-    Course *course = [[LibraryAPI sharedInstance] getCourseForCid:cid];
+    [GZTGlobalModule setSelectedCourse:[d objectForKey:cid]];
+    
+ //   Course *course = [[LibraryAPI sharedInstance] getCourseForCid:cid];
 //    [[LibraryAPI sharedInstance] getSummariesForCourse:course];
     
     // go to lecture view
     GZTLectureViewController *lectureViewController = [[GZTLectureViewController alloc] init];
     
     [self.navigationController pushViewController:(UIViewController *)lectureViewController animated:YES];
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -112,22 +123,67 @@
 - (void)refresh{
     if(![PFUser currentUser]){
         [self.refreshControl endRefreshing];
+        NSLog(@"! current user");
         return;
     }
     
     NSArray *tokens = [[LibraryAPI sharedInstance] tokensforUser:[PFUser currentUser]];
     if(!tokens){
         [self.refreshControl endRefreshing];
+        [self.tableView reloadData];
         addedCourse = @[];
         return;
     }
     
+
     addedCourse = [[LibraryAPI sharedInstance] addedCoursesForTokens:tokens];
+    NSLog(@"after refresh, addedcourses  = %@", addedCourse);
+
     [self.tableView reloadData];
-    [self.view setNeedsDisplay];
+    //[self.view setNeedsDisplay];
     
     [self.refreshControl endRefreshing];
 
 }
+
+-(UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView{
+    return [UIImage imageNamed:@"CourseMirror"];
+}
+
+-(NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView{
+    NSString *text = @"Please add tokens and refresh.";
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:16.0], NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return  [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    
+}
+
+-(CGPoint)offsetForEmptyDataSet:(UIScrollView *)scrollView{
+    return  CGPointMake(0, -self.tableView.frame.size.height/4);
+}
+
+-(NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state{
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0]};
+    return [[NSAttributedString alloc] initWithString:@"Add Token" attributes:attributes];
+}
+
+
+-(BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
+    return  YES;
+}
+
+-(void)emptyDataSetDidTapButton:(UIScrollView *)scrollView{
+    // present add token view controller
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"GZTMain"
+                                                         bundle: nil];
+    GZTAddTokenViewController *addTokenVC = [storyboard instantiateViewControllerWithIdentifier:@"addTokenVC"];
+    
+
+    [self presentViewController:addTokenVC animated:YES completion:nil];
+    
+    
+}
+
+
 
 @end

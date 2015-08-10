@@ -17,6 +17,7 @@
 
 @interface GZTLectureViewController (){
     UITableView *lecTable;
+    UIView *banner;
     NSArray *lectures;
     
 }
@@ -29,11 +30,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+
+    
     //get lectures for cid
     NSString *cid = [GZTGlobalModule selectedCid];
     
     lectures = [[LibraryAPI sharedInstance] getLecturesForCid:cid];
     
+    //create banner image view
+    banner = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 120)];
+    UIImage *img = [[[LibraryAPI sharedInstance] downloadedImages] objectForKey:cid];
+    UIImageView *bannerImgview = [[UIImageView alloc] initWithImage: img];
+    bannerImgview.alpha = 0.5;
+    
+    [banner addSubview:bannerImgview];
+    [self.view addSubview:banner];
+
+   
     //create lecture table
     lecTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 120, self.view.frame.size.width, self.view.frame.size.height-120) style:UITableViewStylePlain];
     lecTable.delegate = self;
@@ -41,6 +54,10 @@
     lecTable.backgroundView = nil;
     
     [self.view addSubview:lecTable];
+    
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self setTitle:cid];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -101,8 +118,11 @@
 
     
     cell.number.text =[@(indexPath.row+1) stringValue] ;
-    cell.date.text =   [[lectures[indexPath.row] date] description];
-
+    
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"MMM dd, yyyy"];
+    NSString *dateStr = [format stringFromDate:[lectures[indexPath.row] date]];
+    cell.date.text =  dateStr;
     return cell;
     
 }

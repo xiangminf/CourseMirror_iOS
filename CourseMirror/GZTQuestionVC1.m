@@ -27,12 +27,22 @@
     [super viewDidLoad];
     self.label.text = self.titleText;
     self.answer = [self.textView text];
+    
+    // HIDE keyboard
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
+}
+-(void)dismissKeyboard {
+    [self.textView resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 

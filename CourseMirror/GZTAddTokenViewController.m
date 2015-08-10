@@ -26,8 +26,15 @@
 - (void)viewDidLoad {
     specialTokens = [[NSArray alloc] initWithObjects:@"t2015", @"t2014", nil];
     [super viewDidLoad];
-
     
+    // HIDE keyboard
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
+}
+-(void)dismissKeyboard {
+    [self.textField resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,6 +71,11 @@
     }else{
         [[[UIAlertView alloc] initWithTitle:@"Invalid or non-existing token" message:@"Please input a valid token, e.g: a1234" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Done", nil] show];
     }
+    
+    
+}
+- (IBAction)cancelMethod:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
     
     
 }

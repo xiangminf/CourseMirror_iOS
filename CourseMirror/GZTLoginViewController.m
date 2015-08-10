@@ -38,6 +38,11 @@
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [[delegate tabBarController] viewDidLoad];
     
+    //download addedtokens and addedcourses for this user
+    NSArray *tokens =  [[LibraryAPI sharedInstance] tokensforUser: user];
+    [[LibraryAPI sharedInstance] addedCoursesForTokens:tokens];
+    
+    
     [logInController dismissViewControllerAnimated:NO completion:NULL];
     [self dismissViewControllerAnimated:NO completion:NULL];
 
@@ -48,6 +53,7 @@
 
 // Sent to the delegate when the log in attempt fails.
 - (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
+    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Failed to log in", nil) message:NSLocalizedString(@"Make sure your username and password are correct.", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
     NSLog(@"Failed to log in...");
 }
 
@@ -82,6 +88,12 @@
 
 // Sent to the delegate when a PFUser is signed up.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+    
+    NSArray *tokens =  [[LibraryAPI sharedInstance] tokensforUser: user];
+    [[LibraryAPI sharedInstance] addedCoursesForTokens:tokens];
+    
+    // go to add token view  tobedone
+    
     [signUpController dismissViewControllerAnimated:YES completion:NULL];
     [self dismissViewControllerAnimated:YES completion:NULL];
 
@@ -89,6 +101,8 @@
 
 // Sent to the delegate when the sign up attempt fails.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
+    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Failed to sign in", nil) message:NSLocalizedString(@"The username has been existing.", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
+
     NSLog(@"Failed to sign up...");
 }
 

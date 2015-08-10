@@ -22,9 +22,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="goToNext:" destination="qJr-fB-H4Y" eventType="touchUpInside" id="L7d-Z9-G93"/>
                                     <action selector="goToPre:" destination="qJr-fB-H4Y" eventType="touchUpInside" id="i5Z-1A-Efa"/>
-                                    <action selector="submit:" destination="qJr-fB-H4Y" eventType="touchUpInside" id="zKz-Wp-WZL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtW-4S-96e">
@@ -93,7 +91,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#: question #: question #: question #: question" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msE-Xl-mU8">
-                                <rect key="frame" x="16" y="20" width="563" height="20.5"/>
+                                <rect key="frame" x="16" y="20" width="563" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -119,6 +117,67 @@
             </objects>
             <point key="canvasLocation" x="1024" y="939"/>
         </scene>
+        <!--NotificationVC-->
+        <scene sceneID="B0y-N0-Uaw">
+            <objects>
+                <viewController storyboardIdentifier="NotificationVC" id="etz-Cx-KaJ" userLabel="NotificationVC" customClass="GZTNotificationController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OE1-0h-EGC"/>
+                        <viewControllerLayoutGuide type="bottom" id="uYi-aW-Nhz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JbX-3W-YhE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8UQ-eg-Zb7">
+                                <rect key="frame" x="42" y="69" width="516" height="125"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQj-ce-BaN">
+                                <rect key="frame" x="16" y="20" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TjW-eZ-3sn">
+                                <rect key="frame" x="16" y="229" width="568" height="130"/>
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvE-zo-rxY">
+                                <rect key="frame" x="381" y="411" width="35" height="30"/>
+                                <state key="normal" title="Push">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pushMethod:" destination="etz-Cx-KaJ" eventType="touchUpInside" id="fmS-Jp-BoK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxS-87-jHG">
+                                <rect key="frame" x="221" y="411" width="40" height="30"/>
+                                <state key="normal" title="Reset">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetMethod:" destination="etz-Cx-KaJ" eventType="touchUpInside" id="WsP-wj-Sqb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="bQj-ce-BaN" id="bpN-TL-Auw"/>
+                        <outlet property="pushButton" destination="cvE-zo-rxY" id="DJp-Lu-vSL"/>
+                        <outlet property="resetButton" destination="zxS-87-jHG" id="vol-bZ-EE3"/>
+                        <outlet property="table" destination="8UQ-eg-Zb7" id="r7g-bh-MUA"/>
+                        <outlet property="textView" destination="TjW-eZ-3sn" id="G4p-5f-VdO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xOw-Kg-rDu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1707" y="189"/>
+        </scene>
         <!--QuestionVC2-->
         <scene sceneID="AP5-m8-LPv">
             <objects>
@@ -132,7 +191,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZI-kD-rNh">
-                                <rect key="frame" x="16" y="28" width="568" height="20.5"/>
+                                <rect key="frame" x="16" y="28" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -188,17 +247,29 @@
                                     <action selector="addMethod:" destination="NVe-er-9Bv" eventType="touchUpInside" id="GtB-dH-nOm"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edl-0k-8ZK">
+                                <rect key="frame" x="16" y="12" width="36" height="55"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <state key="normal" title="❌">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelMethod:" destination="NVe-er-9Bv" eventType="touchUpInside" id="kd9-Kv-ipR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="addButton" destination="wxb-K3-L7k" id="MSU-DW-uES"/>
+                        <outlet property="cancel" destination="edl-0k-8ZK" id="tE3-gq-aas"/>
                         <outlet property="textField" destination="X4g-Jx-mvL" id="JGP-ZM-IiY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0K6-Z7-Skx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2780" y="1348"/>
+            <point key="canvasLocation" x="2763" y="1331"/>
         </scene>
     </scenes>
 </document>

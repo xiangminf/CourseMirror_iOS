@@ -73,17 +73,14 @@ static GZTLectureViewController *lc;
     return lc;
 }
 
-+(void) activeToken: (NSString *)token {
-    activeToken = token;
-}
-
-
+//+(void) activeToken: (NSString *)token {
+//    activeToken = token;
+//}
 
 +(NSString *)getActiveToken{
     NSArray *tokens =[[LibraryAPI sharedInstance] tokensforUser:[PFUser currentUser]];
 
     Course *c = [self selectedCourse];
-    
     // find active token
     for(id token in tokens){
         if( [[c tokens] containsObject:token]){
@@ -91,6 +88,6 @@ static GZTLectureViewController *lc;
         }
     }
     
-    return nil;
+    return NULL;
 }
 @end

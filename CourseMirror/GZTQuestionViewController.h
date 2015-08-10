@@ -24,7 +24,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *pre;
 @property (weak, nonatomic) IBOutlet UIButton *submit;
-
 @property (weak, nonatomic) IBOutlet UIButton *next;
 
 @end

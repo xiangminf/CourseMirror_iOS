@@ -65,7 +65,7 @@
         {
             //if user tokens contain "t2015"
             if(true){
-                cell.textLabel.text = @"About";
+                cell.textLabel.text = @"Notifi";
             }else{
                 cell.textLabel.text = @"Push Notification";
             }
@@ -108,10 +108,14 @@
                 aboutViewController.hidesBottomBarWhenPushed = YES;
             }else{
              
-                GZTNotificationController *notificationController =  [[GZTNotificationController alloc] init];
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"GZTMain"
+                                                                     bundle: nil];
+                GZTNotificationController *notificationVC =  [storyboard instantiateViewControllerWithIdentifier:@"NotificationVC"];
                 
-                [self.navigationController pushViewController:notificationController animated:YES];
-                notificationController.hidesBottomBarWhenPushed = YES;
+                
+                [self.navigationController pushViewController:notificationVC animated:YES];
+                break;
+
             }
             
             
@@ -132,9 +136,9 @@
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"GZTMain"
                                                                  bundle: nil];
            GZTAddTokenViewController *addTokenVC = [storyboard instantiateViewControllerWithIdentifier:@"addTokenVC"];
-    
+            [self presentViewController:addTokenVC animated:YES completion:nil];
             
-            [self.navigationController pushViewController:addTokenVC animated:YES];
+//            [self.navigationController pushViewController:addTokenVC animated:YES];
             break;
         }
         case 3:

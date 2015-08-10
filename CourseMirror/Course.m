@@ -21,12 +21,14 @@
     return self;
 }
 
--(id)initWithCid:(NSString *)cid Title:(NSString *)Title URL:(NSString *)URL Questions:(NSString *)questions Time:(NSString *)time Tokens:(NSString *)tokens{
+-(id)initWithCid:(NSString *)cid Title:(NSString *)Title URL:(NSString *)URL Questions:(NSString *)questions Time:(NSString *)time Tokens:(NSString *)tokens image:(NSString *)imageName{
     self = [super init];
     if(self){
         _cid = cid;
         _Title = Title;
         _URL = URL;
+        _imageName = imageName;
+        
         
         //parse questions
         NSData *jsonData = [questions dataUsingEncoding:NSUTF8StringEncoding];

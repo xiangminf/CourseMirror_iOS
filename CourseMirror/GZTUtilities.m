@@ -134,4 +134,17 @@
 
     return dic;
 }
+
++(void)uploadImageWithName:(NSString*)name key:(NSString*)key{
+    UIImage *image = [UIImage imageNamed: name];
+  //  NSData *imageData = UIImagePNGRepresentation(image);
+   NSData *imageData = UIImageJPEGRepresentation(image, 1);
+    PFFile *imageFile = [PFFile fileWithName:name data:imageData];
+    
+    PFObject *userPhoto = [PFObject objectWithClassName:@"Image"];
+    userPhoto[@"image"] = imageFile;
+    userPhoto[@"key"] = key;
+    [userPhoto saveInBackground];
+}
+
 @end

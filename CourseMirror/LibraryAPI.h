@@ -29,4 +29,10 @@
 -(Summary *)getSummaryForLecture:(Lecture*)lec;
 -(NSDictionary *)getSummariesForCourse:(Course*)course;
 -(NSArray *)addedCoursesForTokens: (NSArray *)tokens;
+
+-(NSDictionary *)downloadedImages;
+
+-(void)sync;
+-(void)saveData;
+
 @end

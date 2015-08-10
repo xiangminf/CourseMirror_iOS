@@ -10,20 +10,33 @@
 #import "Lecture.h"
 
 @interface LocalData(){
-    NSArray *courses;
-    NSArray *lectures;
+
 }
 
 @end
 
 @implementation LocalData
 
-- (NSArray *) getCourses{
-    if(!courses){
-       courses = [ParseClient getCouses];
+-(id)init{
+ 
+    NSData *data = [NSData dataWithContentsOfFile:[NSHomeDirectory() stringByAppendingString:@"Documents/localData.bin"]];
+    if(data == nil){
+        self = [super init];
+    }else{
+        self = [ NSKeyedUnarchiver unarchiveObjectWithData:data];
+        NSLog(@"in localData, init from archived data");
+
     }
     
-    return courses;
+    return self;
+}
+
+- (NSArray *) getCourses{
+    if(!_allcourses){
+       _allcourses = [ParseClient getCouses];
+    }
+    
+    return _allcourses;
 }
 
 - (NSArray *) getLectures{
@@ -33,6 +46,16 @@
     
     return _alllectures;
 }
+
+-(NSArray *)getQuestions{
+    if(!_allquestions){
+        _allquestions  =  [ParseClient getQuestions];
+        
+    }
+    
+    return _allquestions;
+}
+
 
 -(NSArray *)getLecturesForCid: (NSString *)cid{
     if(!_alllectures){
@@ -50,26 +73,15 @@
     return cid_Lectures;
 }
 
-
+//tobedone
 - (NSArray *) getCoursesForToken: (NSString *) token{
- 
-    
-    return courses;
+    return _allcourses;
 }
 - (NSArray *) getCoursesForcid: (NSString *) cid
 {
-    
-    return courses;
+    return _allcourses;
 }
 
--(NSArray *)getQuestions{
-    if(!_allquestions){
-     _allquestions  =  [ParseClient getQuestions];
-        
-    }
-    
-    return _allquestions;
-}
 
 -(void)addToken: (NSString *)token forUser: (PFUser *)user{
     if(!_user_tokens){
@@ -94,9 +106,7 @@
 
 -(NSArray *)tokensforUser: (PFUser *)user{
     NSArray *arr = [_user_tokens objectForKey:user[@"username"]];
-    if(!arr){
         arr = [ParseClient tokensforUser:user];
-    }
     return arr;
 }
 
@@ -140,18 +150,68 @@
 
 -(NSArray *)addedCoursesForTokens: (NSArray *)tokens{
    
-    
    NSMutableArray *addedCourses = [[NSMutableArray alloc] init];
     NSArray *allCourses = [self getCourses];
+    NSLog(@"in localdata, allcourses  = %@", allCourses);
+
     for(NSString *token in tokens){
         for(Course *c in allCourses){
-            if( [[c tokens] containsObject:token]){
+            if( [[c tokens] containsObject:token] && ![addedCourses containsObject:c]){
                 [addedCourses addObject:c];
                 break;
             }
         }
     }
     return addedCourses;
+}
+
+
+//archiving
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self.allcourses forKey:@"allcourses"];
+    [aCoder encodeObject:self.alllectures forKey:@"alllectures"];
+    [aCoder encodeObject:self.allquestions forKey:@"allquestions"];
+    [aCoder encodeObject:self.user_tokens forKey:@"user_tokens"];
+    [aCoder encodeObject:self.lec_summary forKey:@"lec_summary"];
+    [aCoder encodeObject:self.course_dicOfsummary forKey:@"course_dicOfsummary"];
+    [aCoder encodeObject:self.key_image forKey:@"key_image"];
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super init];
+    if(self){
+        _allcourses = [aDecoder decodeObjectForKey:@"allcourses"];
+        _alllectures =[aDecoder decodeObjectForKey:@"alllectures"];
+        _allquestions = [aDecoder decodeObjectForKey:@"allquestions"];
+        _user_tokens = [aDecoder decodeObjectForKey:@"user_tokens"];
+        _lec_summary = [aDecoder decodeObjectForKey:@"lec_summary"];
+        _course_dicOfsummary = [aDecoder decodeObjectForKey:@"course_dicOfsummary"];
+        _key_image = [aDecoder decodeObjectForKey:@"key_image"];
+    }
+    return  self;
+}
+
+-(void)saveData{
+    NSString *fileName = [NSHomeDirectory() stringByAppendingString:@"/Documents/localData.bin"];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
+    [data writeToFile:fileName atomically:YES];
+}
+
+-(NSDictionary *)downloadImages{
+    if(!_key_image){
+        _key_image = [ParseClient downloadImages];
+    }
+    return  _key_image;
+}
+
+-(void)sync{
+    NSLog(@"sync called");
+
+    _allcourses = [ParseClient getCouses];
+    _alllectures = [ParseClient getLectures];
+    _allquestions  =  [ParseClient getQuestions];
+    _key_image = [ParseClient downloadImages];
+    [self saveData];
 }
 
 @end

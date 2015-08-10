@@ -10,7 +10,6 @@
 #import <ParseUI/PFLogInViewController.h>
 #import <ParseUI/PFSignUpViewController.h>
 
-
 @interface AppDelegate : UIResponder <UIApplicationDelegate,PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

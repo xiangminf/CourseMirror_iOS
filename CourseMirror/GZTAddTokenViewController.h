@@ -14,5 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *cancel;
+- (IBAction)cancelMethod:(id)sender;
 
 @end

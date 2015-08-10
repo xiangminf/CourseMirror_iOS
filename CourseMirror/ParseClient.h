@@ -25,4 +25,5 @@
 +(NSArray *)allTokens;
 +(Summary *)getSummaryForLecture:(Lecture*)lec;
 +(NSDictionary *)getSummariesForCourse:(Course*)course;
++(NSDictionary *)downloadImages;
 @end
