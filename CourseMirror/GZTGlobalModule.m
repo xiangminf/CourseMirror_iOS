@@ -15,6 +15,8 @@ static Lecture *selectedLecture;
 static Course *selectedCourse;
 
 static NSArray *alllectures;
+static NSArray *addedCourses;
+
 static NSString * activeToken;
 static GZTSettingViewController *sc;
 static GZTCourseViewController *cc;
@@ -90,4 +92,12 @@ static GZTLectureViewController *lc;
     
     return NULL;
 }
+
++(void) setAddedCourses: (NSArray *)arr{
+    addedCourses =arr;
+}
++(NSArray *)addedCourses{
+    return addedCourses;
+}
+
 @end

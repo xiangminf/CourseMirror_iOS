@@ -44,4 +44,31 @@
     
     return self;
 }
+
+- (void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self.Title forKey:@"Title"];
+    [aCoder encodeObject:self.URL  forKey:@"URL"];
+    [aCoder encodeObject:self.cid  forKey:@"cid"];
+    [aCoder encodeObject:self.tokens  forKey:@"tokens"];
+    [aCoder encodeObject:self.questions  forKey:@"questions"];
+    [aCoder encodeObject:self.imageName  forKey:@"imageName"];
+
+
+    
+    
+    
+}
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super init];
+    if(self){
+        _Title = [aDecoder decodeObjectForKey:@"Title"];
+        _URL =[aDecoder decodeObjectForKey:@"URL"];
+        _cid = [aDecoder decodeObjectForKey:@"cid"];
+        _tokens = [aDecoder decodeObjectForKey:@"tokens"];
+        _questions = [aDecoder decodeObjectForKey:@"questions"];
+        _imageName = [aDecoder decodeObjectForKey:@"imageName"];
+    }
+    return  self;
+}
+
 @end

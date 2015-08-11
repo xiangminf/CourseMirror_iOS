@@ -12,12 +12,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Summary : NSObject
+@interface Summary : NSObject<NSCoding>
 @property (nonatomic, copy, readonly) NSString *cid, *lec_num;
 @property (nonatomic, copy, readonly) NSArray *infoDictionaryArray;
 
 
 -(id)initWith:(NSString*)cid number:(NSString*)num infoArray:(NSArray*)infoArray;
 
-
+- (void)encodeWithCoder:(NSCoder *)aCoder;
+- (id)initWithCoder:(NSCoder *)aDecoder;
 @end

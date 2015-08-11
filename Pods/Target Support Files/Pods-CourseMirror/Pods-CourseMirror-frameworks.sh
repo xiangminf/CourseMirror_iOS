@@ -53,9 +53,11 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods-CourseMirror/DZNEmptyDataSet.framework'
+  install_framework 'Pods-CourseMirror/SHMultipleSelect.framework'
   install_framework 'Pods-CourseMirror/SlackTextViewController.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods-CourseMirror/DZNEmptyDataSet.framework'
+  install_framework 'Pods-CourseMirror/SHMultipleSelect.framework'
   install_framework 'Pods-CourseMirror/SlackTextViewController.framework'
 fi

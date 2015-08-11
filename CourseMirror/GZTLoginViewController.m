@@ -12,6 +12,7 @@
 
 @implementation GZTLoginViewController
 
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -31,18 +32,25 @@
 
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+     NSLog(@"++++++++++++++++");
+//    [[GZTGlobalModule settingViewController] viewDidLoad];
+//    [[GZTGlobalModule courseViewController] viewDidLoad];
     
-    [[GZTGlobalModule settingViewController] viewDidLoad];
-    [[GZTGlobalModule courseViewController] viewDidLoad];
+//    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    [[delegate tabBarController] viewDidLoad];
     
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [[delegate tabBarController] viewDidLoad];
+    
     
     //download addedtokens and addedcourses for this user
     NSArray *tokens =  [[LibraryAPI sharedInstance] tokensforUser: user];
-    [[LibraryAPI sharedInstance] addedCoursesForTokens:tokens];
+    NSArray *addedCourses = [[LibraryAPI sharedInstance] addedCoursesForTokens:tokens];
     
+    [GZTGlobalModule setAddedCourses:addedCourses];
     
+    [[LibraryAPI sharedInstance] setTokens:tokens forUser:user];
+    NSLog(@"++++++++++++++++");
+    [[GZTGlobalModule courseViewController] refresh];
+
     [logInController dismissViewControllerAnimated:NO completion:NULL];
     [self dismissViewControllerAnimated:NO completion:NULL];
 

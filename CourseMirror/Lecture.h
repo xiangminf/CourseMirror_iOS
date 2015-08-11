@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Lecture : NSObject
+@interface Lecture : NSObject<NSCoding>
 @property (nonatomic, copy, readonly) NSString *Title, *cid;
 @property (nonatomic, copy, readonly) NSDate *date;
 @property (nonatomic, copy, readonly) NSArray *questions;
@@ -17,5 +17,7 @@
 
 -(id)initWithCid:(NSString*)cid Title:(NSString*)title date: (NSString *)date number:(id)number questions: (NSArray *)questions;
 
+- (void)encodeWithCoder:(NSCoder *)aCoder;
 
+- (id)initWithCoder:(NSCoder *)aDecoder;
 @end

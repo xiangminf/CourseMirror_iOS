@@ -122,13 +122,13 @@ static NSArray *allTokens;
     [user saveInBackground];
 }
 
-+(NSArray *)tokensforUser: (PFUser *)user{
++(NSMutableArray *)tokensforUser: (PFUser *)user{
     NSString *tokenString = user[@"token"];
-    if(!tokenString) return  nil;
+    if(!tokenString) return  [NSMutableArray new];
     NSArray *arr = [GZTUtilities getArrayFromString:tokenString];
    // NSLog(@"(in ParseClient) get tokens from user: %@", arr);
-    
-    return arr;
+    NSMutableArray *arr1 = [[NSMutableArray alloc] initWithArray:arr];
+    return arr1;
 }
 
 

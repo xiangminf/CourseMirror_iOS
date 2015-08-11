@@ -29,5 +29,26 @@
     
     return self;
 }
+
+
+- (void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self.Qid forKey:@"Qid"];
+    [aCoder encodeObject:self.desc  forKey:@"desc"];
+    [aCoder encodeObject:self.subDesc  forKey:@"subDesc"];
+    [aCoder encodeObject:self.options  forKey:@"options"];
+}
+
+
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super init];
+    if(self){
+        _Qid = [aDecoder decodeObjectForKey:@"Qid"];
+        _desc =[aDecoder decodeObjectForKey:@"desc"];
+        _subDesc = [aDecoder decodeObjectForKey:@"subDesc"];
+        _options = [aDecoder decodeObjectForKey:@"options"];
+    }
+    return  self;
+}
+
 @end
 

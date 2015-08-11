@@ -26,7 +26,7 @@
 -(id)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle: style];
     if(self){
-        [self refresh];
+       
         
         self.title = @"Courses";
         self.tabBarItem.title = @"Courses";
@@ -34,9 +34,9 @@
     //    self.tableView.backgroundColor = [UIColor pddContentBackgroundColor];
         self.tableView.separatorColor = [UIColor pddSeparatorColor];
         self.tableView.separatorInset = UIEdgeInsetsZero;
-
+ [self refresh];
     }
-    NSLog(@"ViewdidLoad in C vc %@", addedCourse);
+//    NSLog(@"ViewdidLoad in C vc %@", addedCourse);
     
     return self;
 }
@@ -123,7 +123,7 @@
 - (void)refresh{
     if(![PFUser currentUser]){
         [self.refreshControl endRefreshing];
-        NSLog(@"! current user");
+//        NSLog(@"! current user");
         return;
     }
     
@@ -135,12 +135,12 @@
         return;
     }
     
-
+  //  addedCourse = [GZTGlobalModule addedCourses];
     addedCourse = [[LibraryAPI sharedInstance] addedCoursesForTokens:tokens];
     NSLog(@"after refresh, addedcourses  = %@", addedCourse);
 
     [self.tableView reloadData];
-    //[self.view setNeedsDisplay];
+    [self.view setNeedsDisplay];
     
     [self.refreshControl endRefreshing];
 

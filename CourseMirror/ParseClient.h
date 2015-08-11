@@ -21,7 +21,7 @@
 
 
 +(void)setTokens: (NSArray *)tokens forUser: (PFUser *)user;
-+(NSArray *)tokensforUser: (PFUser *)user;
++(NSMutableArray *)tokensforUser: (PFUser *)user;
 +(NSArray *)allTokens;
 +(Summary *)getSummaryForLecture:(Lecture*)lec;
 +(NSDictionary *)getSummariesForCourse:(Course*)course;

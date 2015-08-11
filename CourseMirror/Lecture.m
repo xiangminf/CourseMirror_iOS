@@ -28,4 +28,24 @@
     
 }
 
+
+- (void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self.Title forKey:@"Title"];
+    [aCoder encodeObject:self.date  forKey:@"date"];
+    [aCoder encodeObject:self.cid  forKey:@"cid"];
+    [aCoder encodeObject:self.questions  forKey:@"questions"];
+    [aCoder encodeObject:self.number  forKey:@"number"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super init];
+    if(self){
+        _Title = [aDecoder decodeObjectForKey:@"Title"];
+        _date =[aDecoder decodeObjectForKey:@"date"];
+        _cid = [aDecoder decodeObjectForKey:@"cid"];
+        _questions = [aDecoder decodeObjectForKey:@"questions"];
+        _number = [aDecoder decodeObjectForKey:@"number"];
+    }
+    return  self;
+}
 @end

@@ -14,6 +14,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SHMultipleSelect-SHMultipleSelect.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SHMultipleSelect.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SlackTextViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,12 +37,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6F4A2C8E22F7C91BD1E2590E8624E117</key>
+		<key>8A31C6656724A7C83C4DB04634ED7701</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BCFA3111996B354913955FA6A8E018F2</key>
+		<key>A4A5BD1B179C611917BAB85662ED0C48</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A9282685B8DCEDD694E30726E804465C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FC52AB3848801344547F2503835CF6EF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

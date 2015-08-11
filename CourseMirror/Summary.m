@@ -23,6 +23,22 @@
     return self;
 }
 
+- (void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self.cid forKey:@"cid"];
+    [aCoder encodeObject:self.lec_num  forKey:@"lec_num"];
+    [aCoder encodeObject:self.infoDictionaryArray  forKey:@"infoDictionaryArray"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super init];
+    if(self){
+        _cid = [aDecoder decodeObjectForKey:@"cid"];
+        _lec_num =[aDecoder decodeObjectForKey:@"lec_num"];
+        _infoDictionaryArray = [aDecoder decodeObjectForKey:@"infoDictionaryArray"];
+    }
+    return  self;
+}
+
 
 
 -(NSArray *)getTextArray{

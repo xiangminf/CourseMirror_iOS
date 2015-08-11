@@ -1,13 +1,16 @@
 PODS:
   - DZNEmptyDataSet (1.7)
+  - SHMultipleSelect (0.2.2)
   - SlackTextViewController (1.6)
 
 DEPENDENCIES:
   - DZNEmptyDataSet
+  - SHMultipleSelect (~> 0.2.2)
   - SlackTextViewController
 
 SPEC CHECKSUMS:
   DZNEmptyDataSet: 896f8efb3b0961c5ccb59d4959ccf9280854aa3d
+  SHMultipleSelect: 751491f4de21614622c198a760a88272cab62bf3
   SlackTextViewController: 84e1e4b7f12a8e3691cf97ca61c934b99058a2e8
 
 COCOAPODS: 0.38.2

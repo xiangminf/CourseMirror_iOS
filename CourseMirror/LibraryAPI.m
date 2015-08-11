@@ -67,8 +67,14 @@
 
 
 -(NSArray *)tokensforUser: (PFUser *)user{
-    return  [localData tokensforUser: user];
+    return  [localData getTokensforUser: user];
 }
+
+-(void)setTokens:(NSArray *)tokens forUser:(PFUser *)user{
+    NSLog(@"================================================");
+    [localData setTokens:tokens forUser:user];
+}
+
 
 -(NSArray *)allTokens{
     return [ParseClient allTokens];

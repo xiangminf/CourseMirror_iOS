@@ -41,6 +41,7 @@
 		E53673B61B75556A00E141F4 /* GZTMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E53673B51B75556A00E141F4 /* GZTMain.storyboard */; };
 		E53673B91B75562D00E141F4 /* GZTQuestionVC1.m in Sources */ = {isa = PBXBuildFile; fileRef = E53673B81B75562D00E141F4 /* GZTQuestionVC1.m */; };
 		E53673BC1B75563900E141F4 /* GZTQuestionVC2.m in Sources */ = {isa = PBXBuildFile; fileRef = E53673BB1B75563900E141F4 /* GZTQuestionVC2.m */; };
+		E5683D9F1B7955D2007BA5CB /* Data.m in Sources */ = {isa = PBXBuildFile; fileRef = E5683D9E1B7955D2007BA5CB /* Data.m */; };
 		E59519051B6AB5ED0045044E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E59519041B6AB5ED0045044E /* main.m */; };
 		E59519081B6AB5ED0045044E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E59519071B6AB5ED0045044E /* AppDelegate.m */; };
 		E595190B1B6AB5ED0045044E /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E595190A1B6AB5ED0045044E /* FirstViewController.m */; };
@@ -133,6 +134,8 @@
 		E53673B81B75562D00E141F4 /* GZTQuestionVC1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZTQuestionVC1.m; sourceTree = "<group>"; };
 		E53673BA1B75563900E141F4 /* GZTQuestionVC2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZTQuestionVC2.h; sourceTree = "<group>"; };
 		E53673BB1B75563900E141F4 /* GZTQuestionVC2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZTQuestionVC2.m; sourceTree = "<group>"; };
+		E5683D9D1B7955D2007BA5CB /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
+		E5683D9E1B7955D2007BA5CB /* Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.m; sourceTree = "<group>"; };
 		E59518FF1B6AB5ED0045044E /* CourseMirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CourseMirror.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E59519031B6AB5ED0045044E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E59519041B6AB5ED0045044E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -246,6 +249,8 @@
 				E507CC551B6BD2910002E509 /* Question.m */,
 				E5951A2E1B74011E00E34C9D /* Summary.h */,
 				E5951A2F1B74011E00E34C9D /* Summary.m */,
+				E5683D9D1B7955D2007BA5CB /* Data.h */,
+				E5683D9E1B7955D2007BA5CB /* Data.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -617,6 +622,7 @@
 				E507CCA31B6EBEB00002E509 /* CourseCellTableViewCell.m in Sources */,
 				E59519081B6AB5ED0045044E /* AppDelegate.m in Sources */,
 				E59519DD1B71C6F300E34C9D /* PDDAboutView.m in Sources */,
+				E5683D9F1B7955D2007BA5CB /* Data.m in Sources */,
 				E595190B1B6AB5ED0045044E /* FirstViewController.m in Sources */,
 				E507CC561B6BD2910002E509 /* Question.m in Sources */,
 				E507CC791B6BFA180002E509 /* GZTSettingViewController.m in Sources */,

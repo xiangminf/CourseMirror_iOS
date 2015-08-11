@@ -12,7 +12,7 @@
 #import <ParseUI/PFSignUpViewController.h>
 
 
-@interface GZTLoginViewController : PFLogInViewController  
+@interface GZTLoginViewController : PFLogInViewController<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
 
 @end

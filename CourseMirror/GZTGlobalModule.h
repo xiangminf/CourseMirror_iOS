@@ -38,4 +38,7 @@
 +(void) setSelectedCourse: (Course *)c;
 +(Course *)selectedCourse;
 
++(void) setAddedCourses: (NSArray *)arr;
++(NSArray *)addedCourses;
+
 @end

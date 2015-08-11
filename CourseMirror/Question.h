@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Question : NSObject
+@interface Question : NSObject<NSCoding>
 @property (nonatomic, copy, readonly) NSString *Qid;
 @property (nonatomic, copy, readonly) NSString *desc, *subDesc;
 @property (nonatomic, copy, readonly) NSArray *options;
@@ -17,7 +17,7 @@
 
 -(id)initWithQid: (NSString*)QuestionID desc:(NSString*)QuestionDescription subDesc:(NSString*)QuestionSubDescription options:(NSString*)options type: (NSInteger)type;
 
-
-
+- (void)encodeWithCoder:(NSCoder *)aCoder;
+- (id)initWithCoder:(NSCoder *)aDecoder;
 @end
 

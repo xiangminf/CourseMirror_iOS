@@ -79,4 +79,8 @@
     
     
 }
+- (IBAction)sync:(id)sender {
+    [[LibraryAPI sharedInstance] sync];
+    
+}
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface GZTAddTokenViewController : UIViewController
+- (IBAction)sync:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 - (IBAction)addMethod:(id)sender;
 

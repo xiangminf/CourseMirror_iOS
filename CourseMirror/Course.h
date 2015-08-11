@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface Course : NSObject
+@interface Course : NSObject<NSCoding>
 @property (nonatomic, copy, readonly) NSString *Title, *URL, *cid;
 @property (nonatomic, copy, readonly) NSArray *tokens,  *questions;
 @property (nonatomic, copy, readonly) NSString *imageName;

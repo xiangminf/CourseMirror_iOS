@@ -5,6 +5,7 @@ use_frameworks!
 target 'CourseMirror' do
 pod 'DZNEmptyDataSet'
 pod 'SlackTextViewController'
+pod "SHMultipleSelect", "~> 0.2.2"
 
 end
 
